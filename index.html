@@ -1,0 +1,2419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<title>مرض السكري — الدليل الذهبي الشامل</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep:#0a0f1e; --navy:#0d1b3e; --blue:#1a3a6e;
+  --accent:#e84545; --gold:#f5a623; --teal:#00c9a7;
+  --purple:#7c3aed; --pink:#ec4899;
+  --light:#f0f4ff; --white:#ffffff;
+  --glass:rgba(255,255,255,0.06);
+  --glass-border:rgba(255,255,255,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Cairo',sans-serif;background:var(--deep);color:var(--light);overflow-x:hidden;}
+
+/* PARTICLES BG */
+#particles-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse at 15% 20%,rgba(26,58,110,0.5) 0%,transparent 55%),
+    radial-gradient(ellipse at 85% 80%,rgba(0,201,167,0.18) 0%,transparent 50%),
+    radial-gradient(ellipse at 55% 5%,rgba(124,58,237,0.12) 0%,transparent 40%);
+  pointer-events:none;z-index:0;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:0.8rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(10,15,30,0.9);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--glass-border);
+  transition:all 0.3s;
+}
+nav.scrolled{padding:0.5rem 2rem;background:rgba(10,15,30,0.98);}
+.nav-logo{font-family:'Amiri',serif;font-size:1.5rem;color:var(--teal);display:flex;align-items:center;gap:0.5rem;}
+.nav-logo span{font-size:1.8rem;}
+.nav-links{display:flex;gap:0.3rem;list-style:none;flex-wrap:wrap;}
+.nav-links a{
+  color:rgba(240,244,255,0.65);text-decoration:none;
+  font-size:0.8rem;font-weight:600;
+  transition:all 0.3s;padding:0.35rem 0.7rem;border-radius:8px;
+}
+.nav-links a:hover{color:var(--teal);background:rgba(0,201,167,0.1);}
+.nav-toggle{display:none;background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer;}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{
+  position:fixed;top:0;left:0;height:3px;
+  background:linear-gradient(90deg,var(--teal),#0080ff,var(--purple));
+  z-index:300;transition:width 0.1s;
+}
+
+/* ── HERO ── */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:6rem 2rem 4rem;
+  overflow:hidden;z-index:1;
+}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(0,201,167,0.12);animation:spin-slow linear infinite;}
+.hero-ring:nth-child(1){width:380px;height:380px;animation-duration:28s;}
+.hero-ring:nth-child(2){width:600px;height:600px;animation-duration:45s;border-color:rgba(124,58,237,0.08);}
+.hero-ring:nth-child(3){width:820px;height:820px;animation-duration:65s;border-color:rgba(26,58,110,0.15);}
+.hero-ring:nth-child(4){width:1050px;height:1050px;animation-duration:90s;border-color:rgba(0,201,167,0.05);}
+@keyframes spin-slow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(0,201,167,0.12);
+  border:1px solid rgba(0,201,167,0.3);
+  color:var(--teal);padding:0.45rem 1.3rem;
+  border-radius:999px;font-size:0.82rem;font-weight:700;
+  margin-bottom:1.5rem;animation:fadeUp 0.8s ease both;
+}
+.hero h1{
+  font-family:'Amiri',serif;
+  font-size:clamp(2.8rem,8vw,6rem);
+  font-weight:700;line-height:1.15;
+  animation:fadeUp 0.8s 0.2s ease both;
+}
+.hero h1 .grad{
+  background:linear-gradient(135deg,var(--teal) 0%,#0080ff 50%,var(--purple) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:1.1rem;color:rgba(240,244,255,0.6);
+  max-width:580px;margin:1.2rem auto 2.5rem;
+  line-height:1.9;animation:fadeUp 0.8s 0.4s ease both;
+}
+.hero-stats{
+  display:flex;gap:1.2rem;flex-wrap:wrap;
+  justify-content:center;animation:fadeUp 0.8s 0.6s ease both;
+  margin-bottom:2.5rem;
+}
+.stat-pill{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:18px;padding:1rem 1.6rem;text-align:center;
+  backdrop-filter:blur(12px);transition:transform 0.3s,border-color 0.3s;
+}
+.stat-pill:hover{transform:translateY(-4px);border-color:rgba(0,201,167,0.3);}
+.stat-pill .num{font-size:1.9rem;font-weight:900;color:var(--teal);display:block;}
+.stat-pill .lbl{font-size:0.75rem;color:rgba(240,244,255,0.55);}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeUp 0.8s 0.8s ease both;}
+.btn-primary{
+  padding:0.85rem 2rem;
+  background:linear-gradient(135deg,var(--teal),#0080ff);
+  border:none;border-radius:14px;color:var(--deep);
+  font-family:'Cairo',sans-serif;font-size:0.95rem;font-weight:700;
+  cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;display:inline-block;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,201,167,0.35);}
+.btn-outline{
+  padding:0.85rem 2rem;
+  background:transparent;border:1px solid var(--glass-border);
+  border-radius:14px;color:var(--light);
+  font-family:'Cairo',sans-serif;font-size:0.95rem;font-weight:600;
+  cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;
+}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);background:rgba(0,201,167,0.05);}
+.scroll-hint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:0.4rem;
+  color:rgba(240,244,255,0.35);font-size:0.78rem;
+}
+.scroll-arrow{
+  width:30px;height:30px;border:1px solid rgba(0,201,167,0.3);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--teal);animation:bounce 2s infinite;
+}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;padding:5rem 2rem;max-width:1200px;margin:0 auto;}
+.section-label{
+  display:flex;align-items:center;gap:0.7rem;
+  font-size:0.75rem;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--teal);margin-bottom:0.7rem;
+}
+.section-label::before{content:'';width:28px;height:2px;background:var(--teal);}
+.section-title{font-family:'Amiri',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;margin-bottom:1rem;line-height:1.3;}
+.section-desc{color:rgba(240,244,255,0.58);max-width:580px;line-height:1.85;margin-bottom:2.5rem;}
+.section-divider{height:1px;background:linear-gradient(to right,transparent,var(--glass-border),transparent);margin:0 2rem;}
+
+/* ── WHAT IS ── */
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;}
+.what-content p{color:rgba(240,244,255,0.72);line-height:2;margin-bottom:1rem;font-size:0.97rem;}
+.insulin-visual{
+  position:relative;display:flex;align-items:center;
+  justify-content:center;height:380px;
+}
+.center-orb{
+  width:160px;height:160px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,201,167,0.25),rgba(0,201,167,0.05));
+  border:2px solid rgba(0,201,167,0.3);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+  box-shadow:0 0 60px rgba(0,201,167,0.2);
+  animation:pulse-orb 3s ease-in-out infinite;
+}
+@keyframes pulse-orb{0%,100%{box-shadow:0 0 40px rgba(0,201,167,0.2)}50%{box-shadow:0 0 80px rgba(0,201,167,0.35)}}
+.center-orb .orb-icon{font-size:2.5rem;}
+.center-orb .orb-lbl{font-size:0.7rem;color:var(--teal);font-weight:700;margin-top:0.3rem;}
+.orbit-item{
+  position:absolute;background:var(--glass);
+  border:1px solid var(--glass-border);
+  padding:0.6rem 1rem;border-radius:12px;
+  font-size:0.8rem;backdrop-filter:blur(10px);
+  animation:orbit-float 4s ease-in-out infinite;
+}
+.orbit-item:nth-child(2){top:8%;left:50%;transform:translateX(-50%);animation-delay:0s;}
+.orbit-item:nth-child(3){top:38%;right:5%;animation-delay:0.8s;}
+.orbit-item:nth-child(4){bottom:18%;right:12%;animation-delay:1.6s;}
+.orbit-item:nth-child(5){bottom:18%;left:12%;animation-delay:2.4s;}
+.orbit-item:nth-child(6){top:38%;left:5%;animation-delay:3.2s;}
+@keyframes orbit-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ── TYPES ── */
+.types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.type-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:22px;padding:2rem;backdrop-filter:blur(12px);
+  position:relative;overflow:hidden;
+  transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;
+}
+.type-card:hover{transform:translateY(-7px);border-color:rgba(255,255,255,0.22);box-shadow:0 20px 50px rgba(0,0,0,0.3);}
+.type-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity 0.3s;}
+.type-card:hover::before{opacity:1;}
+.type-card.t1::before{background:linear-gradient(135deg,rgba(232,69,69,0.1),transparent);}
+.type-card.t2::before{background:linear-gradient(135deg,rgba(0,201,167,0.1),transparent);}
+.type-card.tg::before{background:linear-gradient(135deg,rgba(245,166,35,0.1),transparent);}
+.type-card.t15::before{background:linear-gradient(135deg,rgba(124,58,237,0.1),transparent);}
+.type-icon{width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin-bottom:1.2rem;}
+.t1 .type-icon{background:rgba(232,69,69,0.15);}
+.t2 .type-icon{background:rgba(0,201,167,0.15);}
+.tg .type-icon{background:rgba(245,166,35,0.15);}
+.t15 .type-icon{background:rgba(124,58,237,0.15);}
+.type-card h3{font-size:1.2rem;font-weight:700;margin-bottom:0.5rem;}
+.type-card p{color:rgba(240,244,255,0.62);font-size:0.88rem;line-height:1.75;}
+.type-tag{display:inline-block;margin-top:1rem;padding:0.3rem 0.9rem;border-radius:999px;font-size:0.72rem;font-weight:700;}
+.t1 .type-tag{background:rgba(232,69,69,0.2);color:#ff8080;}
+.t2 .type-tag{background:rgba(0,201,167,0.2);color:var(--teal);}
+.tg .type-tag{background:rgba(245,166,35,0.2);color:var(--gold);}
+.t15 .type-tag{background:rgba(124,58,237,0.2);color:#a78bfa;}
+
+/* ── SYMPTOMS ── */
+.symptoms-bg{background:linear-gradient(135deg,rgba(26,58,110,0.3),rgba(10,15,30,0));border:1px solid var(--glass-border);border-radius:28px;padding:3rem;}
+.symptoms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;}
+.symptom-item{
+  display:flex;align-items:flex-start;gap:0.8rem;
+  padding:1rem 1.1rem;background:var(--glass);
+  border-radius:14px;border:1px solid var(--glass-border);
+  transition:all 0.3s;cursor:default;
+}
+.symptom-item:hover{background:rgba(255,255,255,0.09);border-color:rgba(0,201,167,0.3);transform:translateY(-2px);}
+.symptom-icon{font-size:1.4rem;flex-shrink:0;}
+.symptom-item span{font-size:0.87rem;color:rgba(240,244,255,0.82);line-height:1.5;}
+
+/* ── BLOOD SUGAR CHART ── */
+.chart-wrap{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:24px;padding:2rem;
+  position:relative;overflow:hidden;
+}
+.chart-title{font-size:1rem;font-weight:700;margin-bottom:1.5rem;color:var(--light);}
+.chart-area{height:200px;position:relative;display:flex;align-items:flex-end;gap:0.5rem;padding:0 0.5rem;}
+.chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:0.4rem;}
+.chart-bar{
+  width:100%;border-radius:8px 8px 0 0;
+  position:relative;cursor:pointer;
+  transition:filter 0.2s,transform 0.2s;
+}
+.chart-bar:hover{filter:brightness(1.2);transform:scaleY(1.03);transform-origin:bottom;}
+.chart-bar-lbl{font-size:0.65rem;color:rgba(240,244,255,0.55);text-align:center;}
+.chart-tooltip{
+  position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  background:var(--navy);border:1px solid var(--glass-border);
+  padding:0.4rem 0.7rem;border-radius:8px;font-size:0.72rem;
+  white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s;z-index:10;
+}
+.chart-bar:hover .chart-tooltip{opacity:1;}
+.chart-lines{position:absolute;inset:0;pointer-events:none;}
+.chart-line{position:absolute;left:0;right:0;height:1px;background:rgba(255,255,255,0.06);}
+.chart-line-lbl{position:absolute;left:0;font-size:0.62rem;color:rgba(240,244,255,0.3);transform:translateY(-50%);}
+
+/* ── RISK METER ── */
+.risk-meter-wrap{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:24px;padding:2rem;text-align:center;
+}
+.risk-gauge{position:relative;width:220px;height:110px;margin:1rem auto;}
+.risk-gauge svg{width:100%;height:auto;}
+.gauge-needle{
+  position:absolute;bottom:0;left:50%;
+  width:4px;height:90px;
+  background:linear-gradient(to top,var(--accent),transparent);
+  transform-origin:bottom center;
+  border-radius:2px;
+  transform:translateX(-50%) rotate(-80deg);
+  transition:transform 1.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+.risk-factors{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:1.5rem;text-align:right;}
+.risk-factor{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem;background:var(--glass);border-radius:10px;border:1px solid var(--glass-border);}
+.risk-factor label{font-size:0.82rem;cursor:pointer;}
+.risk-factor input[type=checkbox]{accent-color:var(--teal);width:16px;height:16px;cursor:pointer;}
+
+/* ── CAUSES TIMELINE ── */
+.causes-timeline{position:relative;padding-right:2.5rem;}
+.causes-timeline::before{content:'';position:absolute;right:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),transparent);}
+.cause-item{position:relative;padding:1.5rem 2.5rem 1.5rem 0;margin-bottom:0.8rem;}
+.cause-item::before{content:'';position:absolute;right:-7px;top:1.8rem;width:14px;height:14px;border-radius:50%;background:var(--teal);box-shadow:0 0 16px rgba(0,201,167,0.6);}
+.cause-item h4{font-size:0.98rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;}
+.cause-item p{font-size:0.85rem;color:rgba(240,244,255,0.6);line-height:1.7;}
+
+/* ── DIAGNOSIS ── */
+.diag-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem;}
+.diag-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:20px;padding:1.8rem;backdrop-filter:blur(12px);
+  text-align:center;transition:transform 0.3s,box-shadow 0.3s;
+}
+.diag-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,0.25);}
+.diag-card .diag-icon{font-size:2.4rem;margin-bottom:0.9rem;}
+.diag-card h4{font-size:0.97rem;font-weight:700;margin-bottom:0.5rem;}
+.diag-card .range{font-size:1.3rem;font-weight:900;color:var(--teal);margin:0.5rem 0;}
+.diag-card p{font-size:0.8rem;color:rgba(240,244,255,0.55);line-height:1.65;}
+
+/* ── TREATMENT TABS ── */
+.treatment-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+.tab-btn{
+  padding:0.55rem 1.3rem;border-radius:999px;
+  border:1px solid var(--glass-border);background:var(--glass);
+  color:rgba(240,244,255,0.7);font-family:'Cairo',sans-serif;
+  font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.3s;
+}
+.tab-btn.active,.tab-btn:hover{background:var(--teal);color:var(--deep);border-color:var(--teal);}
+.tab-content{display:none;}
+.tab-content.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;animation:fadeUp 0.4s ease;}
+.treat-item{display:flex;gap:1rem;padding:1.2rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;align-items:flex-start;}
+.treat-num{width:38px;height:38px;border-radius:10px;background:rgba(0,201,167,0.15);color:var(--teal);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:0.9rem;flex-shrink:0;}
+.treat-item h5{font-size:0.93rem;font-weight:700;margin-bottom:0.3rem;}
+.treat-item p{font-size:0.82rem;color:rgba(240,244,255,0.55);line-height:1.6;}
+
+/* ── NUTRITION ── */
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.food-col h4{font-size:1.05rem;font-weight:700;margin-bottom:1rem;padding:0.6rem 1rem;border-radius:10px;display:flex;align-items:center;gap:0.5rem;}
+.food-col.allowed h4{background:rgba(0,201,167,0.15);color:var(--teal);}
+.food-col.avoid h4{background:rgba(232,69,69,0.15);color:#ff8080;}
+.food-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.food-list li{display:flex;align-items:center;gap:0.7rem;padding:0.65rem 1rem;background:var(--glass);border-radius:10px;font-size:0.86rem;color:rgba(240,244,255,0.8);border:1px solid var(--glass-border);transition:background 0.2s;}
+.food-list li:hover{background:rgba(255,255,255,0.08);}
+
+/* ── MEAL PLANNER ── */
+.meal-planner{background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:2rem;}
+.meal-days{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.day-btn{
+  padding:0.4rem 1rem;border-radius:999px;
+  border:1px solid var(--glass-border);background:transparent;
+  color:rgba(240,244,255,0.7);font-family:'Cairo',sans-serif;
+  font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.3s;
+}
+.day-btn.active{background:rgba(0,201,167,0.2);color:var(--teal);border-color:rgba(0,201,167,0.4);}
+.meal-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+.meal-card{background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:14px;padding:1.2rem;}
+.meal-card .meal-time{font-size:0.7rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.5rem;}
+.meal-card h5{font-size:0.9rem;font-weight:700;margin-bottom:0.4rem;}
+.meal-card p{font-size:0.8rem;color:rgba(240,244,255,0.55);line-height:1.5;}
+.meal-card .cal-badge{display:inline-block;margin-top:0.6rem;padding:0.2rem 0.6rem;background:rgba(245,166,35,0.15);border-radius:6px;font-size:0.72rem;color:var(--gold);font-weight:700;}
+
+/* ── CALCULATOR ── */
+.calc-wrapper{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:26px;padding:2.5rem;backdrop-filter:blur(12px);
+  max-width:620px;margin:0 auto;
+}
+.calc-wrapper h3{font-size:1.3rem;font-weight:700;margin-bottom:0.4rem;text-align:center;}
+.calc-wrapper .subtitle{text-align:center;color:rgba(240,244,255,0.55);font-size:0.85rem;margin-bottom:2rem;}
+.calc-tabs{display:flex;gap:0.5rem;margin-bottom:1.5rem;background:rgba(255,255,255,0.04);padding:0.4rem;border-radius:14px;}
+.calc-tab{flex:1;padding:0.55rem;background:transparent;border:none;color:rgba(240,244,255,0.6);font-family:'Cairo',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;border-radius:10px;transition:all 0.3s;}
+.calc-tab.active{background:var(--teal);color:var(--deep);}
+.calc-panel{display:none;}
+.calc-panel.active{display:block;animation:fadeUp 0.3s ease;}
+.calc-row{margin-bottom:1.2rem;}
+.calc-row label{display:block;font-size:0.86rem;font-weight:600;color:rgba(240,244,255,0.8);margin-bottom:0.5rem;}
+.calc-row input,.calc-row select{
+  width:100%;padding:0.8rem 1.2rem;
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--glass-border);border-radius:12px;
+  color:var(--white);font-family:'Cairo',sans-serif;font-size:0.97rem;outline:none;transition:border-color 0.3s;
+}
+.calc-row input:focus,.calc-row select:focus{border-color:var(--teal);}
+.calc-row select option{background:var(--navy);}
+.calc-btn{
+  width:100%;padding:1rem;
+  background:linear-gradient(135deg,var(--teal),#0080ff);
+  border:none;border-radius:14px;color:var(--deep);
+  font-family:'Cairo',sans-serif;font-size:1rem;font-weight:700;
+  cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;margin-top:0.5rem;
+}
+.calc-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,201,167,0.35);}
+.calc-result{display:none;margin-top:1.5rem;padding:1.4rem;border-radius:16px;border:1px solid;text-align:center;}
+.calc-result.normal{background:rgba(0,201,167,0.1);border-color:rgba(0,201,167,0.3);}
+.calc-result.prediabetes{background:rgba(245,166,35,0.1);border-color:rgba(245,166,35,0.3);}
+.calc-result.diabetes{background:rgba(232,69,69,0.1);border-color:rgba(232,69,69,0.3);}
+.calc-result .result-val{font-size:1.9rem;font-weight:900;margin-bottom:0.4rem;}
+.calc-result.normal .result-val{color:var(--teal);}
+.calc-result.prediabetes .result-val{color:var(--gold);}
+.calc-result.diabetes .result-val{color:#ff8080;}
+.calc-result .result-msg{font-size:0.88rem;color:rgba(240,244,255,0.75);}
+.bmi-result-bars{margin-top:1.2rem;}
+.bmi-bar-wrap{display:flex;height:14px;border-radius:999px;overflow:hidden;margin-bottom:0.8rem;}
+.bmi-seg{height:100%;transition:flex 0.5s;}
+.bmi-indicator{position:relative;}
+.bmi-arrow{
+  position:absolute;top:-6px;
+  width:0;height:0;
+  border-left:6px solid transparent;border-right:6px solid transparent;
+  border-top:10px solid var(--white);
+  transform:translateX(-50%);transition:left 1s ease;
+}
+
+/* ── EXERCISE TRACKER ── */
+.exercise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;}
+.exercise-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:18px;padding:1.5rem;
+  transition:all 0.3s;cursor:pointer;
+}
+.exercise-card:hover,.exercise-card.selected{
+  border-color:rgba(0,201,167,0.4);
+  background:rgba(0,201,167,0.06);
+  transform:translateY(-4px);
+}
+.exercise-card .ex-icon{font-size:2.2rem;margin-bottom:0.8rem;}
+.exercise-card h5{font-size:0.95rem;font-weight:700;margin-bottom:0.3rem;}
+.exercise-card p{font-size:0.8rem;color:rgba(240,244,255,0.55);}
+.exercise-card .ex-cal{margin-top:0.7rem;font-size:0.78rem;font-weight:700;color:var(--gold);}
+.exercise-summary{
+  margin-top:1.5rem;padding:1.2rem 1.5rem;
+  background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.2);
+  border-radius:14px;display:none;
+  flex-wrap:wrap;gap:1rem;justify-content:space-around;
+}
+.ex-sum-item{text-align:center;}
+.ex-sum-item .sv{font-size:1.5rem;font-weight:900;color:var(--teal);}
+.ex-sum-item .sl{font-size:0.75rem;color:rgba(240,244,255,0.55);}
+
+/* ── MEDICATION REMINDER ── */
+.reminder-wrap{background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:2rem;max-width:700px;margin:0 auto;}
+.reminder-form{display:grid;grid-template-columns:1fr 1fr auto;gap:1rem;align-items:end;margin-bottom:1.5rem;}
+.reminder-form input,.reminder-form select{
+  width:100%;padding:0.75rem 1rem;
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--glass-border);border-radius:12px;
+  color:var(--white);font-family:'Cairo',sans-serif;font-size:0.9rem;outline:none;
+}
+.reminder-form input:focus,.reminder-form select:focus{border-color:var(--teal);}
+.add-reminder-btn{
+  padding:0.75rem 1.2rem;background:var(--teal);border:none;
+  border-radius:12px;color:var(--deep);font-family:'Cairo',sans-serif;
+  font-weight:700;cursor:pointer;white-space:nowrap;transition:opacity 0.2s;
+}
+.add-reminder-btn:hover{opacity:0.85;}
+.reminders-list{display:flex;flex-direction:column;gap:0.7rem;}
+.reminder-item{
+  display:flex;align-items:center;gap:1rem;
+  padding:0.9rem 1.2rem;
+  background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);
+  border-radius:12px;
+}
+.rem-time{font-weight:700;color:var(--teal);font-size:1rem;flex-shrink:0;}
+.rem-name{flex:1;font-size:0.9rem;}
+.rem-del{background:rgba(232,69,69,0.15);border:none;color:#ff8080;width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:0.85rem;transition:background 0.2s;}
+.rem-del:hover{background:rgba(232,69,69,0.3);}
+
+/* ── BLOOD SUGAR LOG ── */
+.log-wrap{background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:2rem;}
+.log-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:0.8rem;align-items:end;margin-bottom:1.5rem;}
+.log-form input,.log-form select{
+  width:100%;padding:0.7rem 0.9rem;
+  background:rgba(255,255,255,0.05);border:1px solid var(--glass-border);
+  border-radius:10px;color:var(--white);
+  font-family:'Cairo',sans-serif;font-size:0.88rem;outline:none;
+}
+.log-form input:focus,.log-form select:focus{border-color:var(--teal);}
+.add-log-btn{
+  padding:0.7rem 1rem;background:var(--teal);border:none;
+  border-radius:10px;color:var(--deep);font-family:'Cairo',sans-serif;
+  font-weight:700;cursor:pointer;white-space:nowrap;font-size:0.85rem;
+}
+.log-table-wrap{overflow-x:auto;}
+.log-table{width:100%;border-collapse:collapse;}
+.log-table th{padding:0.7rem 1rem;text-align:right;font-size:0.78rem;color:rgba(240,244,255,0.5);font-weight:600;border-bottom:1px solid var(--glass-border);}
+.log-table td{padding:0.75rem 1rem;font-size:0.87rem;border-bottom:1px solid rgba(255,255,255,0.04);}
+.log-table tr:hover td{background:rgba(255,255,255,0.03);}
+.status-badge{padding:0.2rem 0.7rem;border-radius:999px;font-size:0.72rem;font-weight:700;}
+.status-normal{background:rgba(0,201,167,0.15);color:var(--teal);}
+.status-high{background:rgba(232,69,69,0.15);color:#ff8080;}
+.status-low{background:rgba(245,166,35,0.15);color:var(--gold);}
+
+/* ── COMPLICATION WHEEL ── */
+.complications-visual{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;
+  position:relative;
+}
+.comp-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:18px;padding:1.5rem;text-align:center;
+  transition:all 0.3s;
+}
+.comp-card:hover{transform:translateY(-5px);border-color:rgba(232,69,69,0.3);background:rgba(232,69,69,0.05);}
+.comp-card .comp-icon{font-size:2.2rem;margin-bottom:0.7rem;}
+.comp-card h4{font-size:0.9rem;font-weight:700;margin-bottom:0.4rem;}
+.comp-card p{font-size:0.78rem;color:rgba(240,244,255,0.55);line-height:1.6;}
+.comp-card .comp-risk{
+  margin-top:0.8rem;font-size:0.72rem;font-weight:700;
+  padding:0.25rem 0.6rem;border-radius:6px;display:inline-block;
+}
+.risk-high{background:rgba(232,69,69,0.2);color:#ff8080;}
+.risk-med{background:rgba(245,166,35,0.2);color:var(--gold);}
+
+/* ── MYTHS ── */
+.myths-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.3rem;}
+.myth-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:18px;padding:1.6rem;overflow:hidden;position:relative;
+}
+.myth-card::before{
+  content:'';position:absolute;top:0;right:0;
+  width:4px;height:100%;
+}
+.myth-card.myth::before{background:var(--accent);}
+.myth-card.fact::before{background:var(--teal);}
+.myth-label{font-size:0.7rem;font-weight:700;letter-spacing:2px;margin-bottom:0.6rem;}
+.myth-card.myth .myth-label{color:#ff8080;}
+.myth-card.fact .myth-label{color:var(--teal);}
+.myth-card h4{font-size:0.92rem;font-weight:700;margin-bottom:0.5rem;}
+.myth-card p{font-size:0.83rem;color:rgba(240,244,255,0.6);line-height:1.65;}
+
+/* ── PREVENTION ── */
+.prev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.4rem;}
+.prev-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:20px;padding:1.8rem;text-align:center;
+  backdrop-filter:blur(12px);transition:all 0.3s;position:relative;overflow:hidden;
+}
+.prev-card:hover{transform:translateY(-6px);border-color:rgba(0,201,167,0.3);box-shadow:0 15px 40px rgba(0,0,0,0.25);}
+.prev-card .prev-icon{font-size:2.6rem;margin-bottom:1rem;}
+.prev-card h4{font-size:0.97rem;font-weight:700;margin-bottom:0.5rem;}
+.prev-card p{font-size:0.83rem;color:rgba(240,244,255,0.6);line-height:1.6;}
+
+/* ── LIFESTYLE TIPS ── */
+.tips-timeline{position:relative;max-width:700px;margin:0 auto;}
+.tip-item{
+  display:flex;gap:1.5rem;margin-bottom:2rem;position:relative;
+}
+.tip-item::before{
+  content:'';position:absolute;right:22px;top:45px;bottom:-2rem;
+  width:2px;background:linear-gradient(to bottom,rgba(0,201,167,0.3),transparent);
+}
+.tip-item:last-child::before{display:none;}
+.tip-num{
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),#0080ff);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:1rem;color:var(--deep);flex-shrink:0;
+}
+.tip-body{flex:1;}
+.tip-body h4{font-size:1rem;font-weight:700;margin-bottom:0.4rem;}
+.tip-body p{font-size:0.87rem;color:rgba(240,244,255,0.62);line-height:1.7;}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:0.9rem;max-width:820px;margin:0 auto;}
+.faq-item{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;}
+.faq-q{padding:1.2rem 1.5rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;font-size:0.93rem;gap:1rem;transition:background 0.3s;}
+.faq-q:hover{background:rgba(255,255,255,0.04);}
+.faq-arrow{width:28px;height:28px;border-radius:50%;background:rgba(0,201,167,0.15);color:var(--teal);display:flex;align-items:center;justify-content:center;transition:transform 0.3s;flex-shrink:0;font-size:0.78rem;}
+.faq-item.open .faq-arrow{transform:rotate(180deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;color:rgba(240,244,255,0.65);font-size:0.88rem;line-height:1.85;padding:0 1.5rem;}
+.faq-item.open .faq-a{max-height:400px;padding:0 1.5rem 1.3rem;}
+
+/* ── GLOBAL STATS ── */
+.global-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2rem;}
+.global-stat{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:18px;padding:1.5rem;text-align:center;
+  transition:transform 0.3s;
+}
+.global-stat:hover{transform:translateY(-4px);}
+.global-stat .gs-num{font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,var(--teal),#0080ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.global-stat .gs-lbl{font-size:0.8rem;color:rgba(240,244,255,0.55);margin-top:0.3rem;}
+.global-stat .gs-icon{font-size:1.8rem;margin-bottom:0.5rem;}
+
+/* ── GLOSSARY ── */
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem;}
+.gloss-item{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:14px;padding:1.2rem 1.5rem;
+}
+.gloss-item .term{font-weight:700;color:var(--teal);font-size:0.92rem;margin-bottom:0.4rem;}
+.gloss-item .def{font-size:0.83rem;color:rgba(240,244,255,0.62);line-height:1.65;}
+
+/* ── RESOURCES ── */
+.resources-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.3rem;}
+.res-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:18px;padding:1.5rem;transition:all 0.3s;
+}
+.res-card:hover{border-color:rgba(0,201,167,0.3);transform:translateY(-4px);}
+.res-card .res-icon{font-size:2rem;margin-bottom:0.8rem;}
+.res-card h4{font-size:0.95rem;font-weight:700;margin-bottom:0.4rem;}
+.res-card p{font-size:0.82rem;color:rgba(240,244,255,0.55);line-height:1.6;}
+.res-type{display:inline-block;margin-top:0.8rem;padding:0.25rem 0.7rem;border-radius:6px;font-size:0.72rem;font-weight:700;background:rgba(0,201,167,0.15);color:var(--teal);}
+
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:1;padding:3rem 2rem 2rem;
+  border-top:1px solid var(--glass-border);
+}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;}
+.footer-brand .footer-logo{font-family:'Amiri',serif;font-size:1.6rem;color:var(--teal);margin-bottom:0.8rem;}
+.footer-brand p{font-size:0.85rem;color:rgba(240,244,255,0.45);line-height:1.8;max-width:280px;}
+.footer-col h5{font-size:0.88rem;font-weight:700;color:var(--light);margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.footer-col ul a{color:rgba(240,244,255,0.45);text-decoration:none;font-size:0.82rem;transition:color 0.2s;}
+.footer-col ul a:hover{color:var(--teal);}
+.footer-bottom{max-width:1200px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid var(--glass-border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{font-size:0.78rem;color:rgba(240,244,255,0.35);}
+.disclaimer-box{
+  background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);
+  border-radius:12px;padding:1rem 1.3rem;margin-top:2rem;font-size:0.82rem;
+  color:rgba(240,244,255,0.6);line-height:1.7;max-width:1200px;margin:2rem auto 0;
+}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:2rem;left:2rem;z-index:100;
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),#0080ff);
+  border:none;color:var(--deep);font-size:1.2rem;
+  cursor:pointer;opacity:0;transition:opacity 0.3s,transform 0.3s;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(0,201,167,0.4);
+}
+#back-top.visible{opacity:1;}
+#back-top:hover{transform:translateY(-3px);}
+
+/* ── TOAST ── */
+#toast{
+  position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(30px);
+  background:var(--teal);color:var(--deep);padding:0.7rem 1.5rem;border-radius:999px;
+  font-size:0.88rem;font-weight:700;opacity:0;transition:all 0.3s;z-index:300;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE — TABLET 900px ── */
+@media(max-width:900px){
+  nav{padding:0.7rem 1.2rem;}
+  nav.scrolled{padding:0.5rem 1.2rem;}
+  .nav-links{display:none;}
+  .nav-toggle{display:block;}
+
+  .hero{padding:5rem 1.2rem 3rem;}
+  .hero h1{font-size:clamp(2rem,7vw,3.5rem);}
+  .hero-sub{font-size:0.97rem;}
+  .hero-stats{gap:0.8rem;}
+  .stat-pill{padding:0.75rem 1.1rem;}
+  .stat-pill .num{font-size:1.5rem;}
+
+  section{padding:3.5rem 1.2rem;}
+
+  .what-grid{grid-template-columns:1fr;}
+  .insulin-visual{height:260px;margin-top:2rem;}
+
+  .food-grid{grid-template-columns:1fr;}
+
+  .footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}
+
+  .complications-visual{grid-template-columns:1fr 1fr;}
+
+  .reminder-form{grid-template-columns:1fr 1fr;}
+  .log-form{grid-template-columns:1fr 1fr;}
+
+  .risk-factors{grid-template-columns:1fr;}
+
+  .types-grid{grid-template-columns:1fr 1fr;}
+
+  .diag-cards{grid-template-columns:1fr 1fr;}
+
+  .prev-grid{grid-template-columns:1fr 1fr;}
+
+  .global-stats-grid{grid-template-columns:1fr 1fr 1fr;}
+
+  .resources-grid{grid-template-columns:1fr 1fr;}
+
+  .myths-grid{grid-template-columns:1fr;}
+
+  .calc-wrapper{padding:1.8rem;}
+}
+
+/* ── RESPONSIVE — MOBILE 600px ── */
+@media(max-width:600px){
+  nav{padding:0.65rem 1rem;}
+  .nav-logo{font-size:1.2rem;}
+  .nav-logo span{font-size:1.4rem;}
+
+  .hero{padding:4.5rem 1rem 2.5rem;}
+  .hero h1{font-size:clamp(1.8rem,9vw,2.8rem);line-height:1.2;}
+  .hero-sub{font-size:0.88rem;margin:1rem auto 2rem;}
+  .hero-stats{gap:0.6rem;}
+  .stat-pill{padding:0.65rem 0.9rem;border-radius:14px;}
+  .stat-pill .num{font-size:1.3rem;}
+  .stat-pill .lbl{font-size:0.68rem;}
+  .hero-cta{flex-direction:column;align-items:center;gap:0.7rem;}
+  .btn-primary,.btn-outline{width:100%;max-width:280px;text-align:center;padding:0.8rem 1.5rem;}
+
+  /* Rings smaller on mobile */
+  .hero-ring:nth-child(1){width:250px;height:250px;}
+  .hero-ring:nth-child(2){width:380px;height:380px;}
+  .hero-ring:nth-child(3){width:500px;height:500px;}
+  .hero-ring:nth-child(4){width:620px;height:620px;}
+
+  section{padding:2.8rem 1rem;}
+  .section-title{font-size:clamp(1.5rem,6vw,2.2rem);}
+  .section-desc{font-size:0.85rem;}
+
+  /* What is */
+  .what-grid{grid-template-columns:1fr;gap:1.5rem;}
+  .insulin-visual{height:220px;}
+  .orbit-item{font-size:0.7rem;padding:0.4rem 0.7rem;}
+  .center-orb{width:120px;height:120px;}
+  .center-orb .orb-icon{font-size:1.8rem;}
+
+  /* Types */
+  .types-grid{grid-template-columns:1fr;}
+  .type-card{padding:1.5rem;}
+
+  /* Symptoms */
+  .symptoms-bg{padding:1.5rem 1rem;}
+  .symptoms-grid{grid-template-columns:1fr 1fr;}
+  .symptom-item{padding:0.7rem 0.8rem;}
+  .symptom-icon{font-size:1.1rem;}
+  .symptom-item span{font-size:0.78rem;}
+
+  /* Chart */
+  .chart-wrap{padding:1.2rem 1rem;}
+  .chart-area{gap:0.3rem;}
+  .chart-bar-lbl{font-size:0.58rem;}
+
+  /* Diagnosis */
+  .diag-cards{grid-template-columns:1fr;}
+
+  /* Treatment tabs */
+  .treatment-tabs{gap:0.4rem;}
+  .tab-btn{font-size:0.78rem;padding:0.45rem 0.9rem;}
+  .tab-content.active{grid-template-columns:1fr;}
+
+  /* Nutrition */
+  .food-grid{grid-template-columns:1fr;gap:1.2rem;}
+
+  /* Meal planner */
+  .meal-planner{padding:1.3rem 1rem;}
+  .meal-cards{grid-template-columns:1fr 1fr;}
+  .meal-days{gap:0.35rem;}
+  .day-btn{font-size:0.75rem;padding:0.35rem 0.75rem;}
+
+  /* Calculator */
+  .calc-wrapper{padding:1.3rem 1rem;border-radius:18px;}
+  .calc-tabs{flex-direction:column;gap:0.4rem;}
+  .calc-tab{text-align:center;}
+
+  /* Exercise */
+  .exercise-grid{grid-template-columns:1fr 1fr;}
+  .exercise-card{padding:1rem;}
+  .exercise-card .ex-icon{font-size:1.7rem;}
+  .exercise-card h5{font-size:0.85rem;}
+  .exercise-card p{font-size:0.75rem;}
+
+  /* Reminder */
+  .reminder-wrap{padding:1.3rem 1rem;}
+  .reminder-form{grid-template-columns:1fr;gap:0.7rem;}
+  .reminder-item{flex-wrap:wrap;gap:0.6rem;}
+
+  /* Log */
+  .log-wrap{padding:1.3rem 1rem;}
+  .log-form{grid-template-columns:1fr 1fr;gap:0.6rem;}
+  .log-table th,.log-table td{padding:0.55rem 0.65rem;font-size:0.78rem;}
+
+  /* Complications */
+  .complications-visual{grid-template-columns:1fr;}
+  .comp-card{padding:1.2rem;}
+
+  /* Myths */
+  .myths-grid{grid-template-columns:1fr;}
+
+  /* Prevention */
+  .prev-grid{grid-template-columns:1fr 1fr;}
+  .prev-card{padding:1.3rem 1rem;}
+  .prev-card .prev-icon{font-size:2rem;}
+
+  /* Tips timeline */
+  .tips-timeline{padding:0;}
+  .tip-item{gap:1rem;}
+  .tip-num{width:38px;height:38px;font-size:0.88rem;}
+  .tip-body h4{font-size:0.9rem;}
+
+  /* FAQ */
+  .faq-q{font-size:0.85rem;padding:1rem 1.1rem;}
+  .faq-a{font-size:0.82rem;}
+  .faq-item.open .faq-a{padding:0 1.1rem 1rem;}
+
+  /* Global stats */
+  .global-stats-grid{grid-template-columns:1fr 1fr;}
+  .global-stat{padding:1.1rem 0.8rem;}
+  .global-stat .gs-num{font-size:1.7rem;}
+
+  /* Glossary */
+  .glossary-grid{grid-template-columns:1fr;}
+
+  /* Resources */
+  .resources-grid{grid-template-columns:1fr;}
+
+  /* Risk meter */
+  .risk-factors{grid-template-columns:1fr;}
+
+  /* Causes timeline */
+  .causes-timeline{padding-right:1.8rem;}
+
+  /* Footer */
+  .footer-inner{grid-template-columns:1fr;gap:1.5rem;}
+  footer{padding:2rem 1rem 1.5rem;}
+  .footer-bottom{flex-direction:column;text-align:center;gap:0.5rem;}
+
+  /* Back to top */
+  #back-top{bottom:1.2rem;left:1.2rem;width:38px;height:38px;font-size:1rem;}
+
+  /* Toast */
+  #toast{font-size:0.82rem;padding:0.6rem 1.2rem;bottom:4.5rem;}
+
+  /* Canvas map */
+  #mapCanvas{height:220px;}
+
+  /* Report output grid fix */
+  #reportOutput .report-grid-2{grid-template-columns:1fr!important;}
+
+  /* Inline grids in report */
+  div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important;}
+}
+
+/* ── RESPONSIVE — SMALL MOBILE 380px ── */
+@media(max-width:380px){
+  .hero h1{font-size:1.7rem;}
+  .stat-pill .num{font-size:1.1rem;}
+  .symptoms-grid{grid-template-columns:1fr;}
+  .meal-cards{grid-template-columns:1fr;}
+  .exercise-grid{grid-template-columns:1fr;}
+  .prev-grid{grid-template-columns:1fr;}
+  .log-form{grid-template-columns:1fr;}
+  .global-stats-grid{grid-template-columns:1fr 1fr;}
+  .section-title{font-size:1.5rem;}
+}
+
+/* ── TOUCH & MOBILE UX ── */
+@media(hover:none) and (pointer:coarse){
+  .chart-bar:hover .chart-tooltip{opacity:0;}
+  .type-card:hover,.stat-pill:hover,.prev-card:hover,
+  .comp-card:hover,.res-card:hover,.global-stat:hover{transform:none!important;}
+  .btn-primary:hover,.btn-outline:hover,.calc-btn:hover{transform:none!important;box-shadow:none!important;}
+}
+img,canvas,video{max-width:100%;height:auto;}
+.log-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+@media(max-width:600px){
+  input,select,textarea{font-size:16px!important;}
+  button,a{min-height:44px;}
+  .faq-q{min-height:52px;}
+}
+
+/* ── MOBILE NAV ── */
+.mobile-nav{
+  display:none;flex-direction:column;
+  position:fixed;inset:0;background:rgba(10,15,30,0.97);
+  z-index:150;padding:5rem 2rem 2rem;gap:1rem;
+  overflow-y:auto;
+}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{color:rgba(240,244,255,0.8);text-decoration:none;font-size:1.2rem;font-weight:600;padding:1rem 0;border-bottom:1px solid var(--glass-border);}
+</style>
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+<div id="progress-bar"></div>
+<div id="toast"></div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#what" onclick="closeMobileNav()">🔬 ما هو السكري</a>
+  <a href="#types" onclick="closeMobileNav()">📋 الأنواع</a>
+  <a href="#symptoms" onclick="closeMobileNav()">🤒 الأعراض</a>
+  <a href="#diagnosis" onclick="closeMobileNav()">🧪 التشخيص</a>
+  <a href="#treatment" onclick="closeMobileNav()">💊 العلاج</a>
+  <a href="#nutrition" onclick="closeMobileNav()">🥗 التغذية</a>
+  <a href="#meal-plan" onclick="closeMobileNav()">🍽️ خطة الطعام</a>
+  <a href="#exercise" onclick="closeMobileNav()">🏃 الرياضة</a>
+  <a href="#calculator" onclick="closeMobileNav()">🧮 الحاسبة</a>
+  <a href="#log" onclick="closeMobileNav()">📊 سجل السكر</a>
+  <a href="#reminders" onclick="closeMobileNav()">⏰ التذكيرات</a>
+  <a href="#complications" onclick="closeMobileNav()">⚠️ المضاعفات</a>
+  <a href="#myths" onclick="closeMobileNav()">💡 الخرافات</a>
+  <a href="#prevention" onclick="closeMobileNav()">🛡️ الوقاية</a>
+  <a href="#faq" onclick="closeMobileNav()">❓ أسئلة</a>
+  <a href="#glossary" onclick="closeMobileNav()">📖 المصطلحات</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo"><span>🩺</span> دليل السكري الذهبي</div>
+  <ul class="nav-links">
+    <li><a href="#what">ما هو</a></li>
+    <li><a href="#types">الأنواع</a></li>
+    <li><a href="#symptoms">الأعراض</a></li>
+    <li><a href="#diagnosis">التشخيص</a></li>
+    <li><a href="#treatment">العلاج</a></li>
+    <li><a href="#nutrition">التغذية</a></li>
+    <li><a href="#calculator">الحاسبة</a></li>
+    <li><a href="#log">سجل السكر</a></li>
+    <li><a href="#reminders">التذكيرات</a></li>
+    <li><a href="#quiz">كويز</a></li>
+    <li><a href="#comparison">مقارنة</a></li>
+    <li><a href="#medications">الأدوية</a></li>
+    <li><a href="#devices">الأجهزة</a></li>
+    <li><a href="#insulin-calc">الأنسولين</a></li>
+    <li><a href="#timer">المؤقت</a></li>
+    <li><a href="#report">تقريري</a></li>
+    <li><a href="#faq">أسئلة</a></li>
+  </ul>
+  <button class="nav-toggle" onclick="toggleMobileNav()">☰</button>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+
+  <div class="hero-badge">📚 الدليل الذهبي الشامل 2026</div>
+  <h1>مرض <span class="grad">السكري</span><br>كل ما تحتاج معرفته</h1>
+  <p class="hero-sub">دليل علمي شامل ومتكامل يغطي كل جوانب مرض السكري — من الأسباب والأعراض إلى العلاج والوقاية والأدوات التفاعلية</p>
+
+  <div class="hero-stats">
+    <div class="stat-pill"><span class="num">537M</span><span class="lbl">مصاب عالمياً</span></div>
+    <div class="stat-pill"><span class="num">4</span><span class="lbl">أنواع رئيسية</span></div>
+    <div class="stat-pill"><span class="num">80%</span><span class="lbl">قابل للوقاية</span></div>
+    <div class="stat-pill"><span class="num">783M</span><span class="lbl">متوقع 2045</span></div>
+    <div class="stat-pill"><span class="num">1921</span><span class="lbl">اكتشاف الأنسولين</span></div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#what" class="btn-primary">ابدأ التعلم</a>
+    <a href="#calculator" class="btn-outline">حاسبة السكر</a>
+  </div>
+
+  <div class="scroll-hint">
+    اكتشف المزيد
+    <div class="scroll-arrow">↓</div>
+  </div>
+</div>
+
+<!-- ═══════════ GLOBAL STATS ═══════════ -->
+<section>
+  <div class="section-label">الصورة الكاملة</div>
+  <h2 class="section-title">السكري في أرقام عالمية</h2>
+  <div class="global-stats-grid reveal">
+    <div class="global-stat"><div class="gs-icon">🌍</div><div class="gs-num">537M</div><div class="gs-lbl">شخص مصاب حول العالم</div></div>
+    <div class="global-stat"><div class="gs-icon">😶‍🌫️</div><div class="gs-num">240M</div><div class="gs-lbl">لا يعلمون إصابتهم</div></div>
+    <div class="global-stat"><div class="gs-icon">💰</div><div class="gs-num">966B$</div><div class="gs-lbl">تكلفة الرعاية سنوياً</div></div>
+    <div class="global-stat"><div class="gs-icon">💔</div><div class="gs-num">6.7M</div><div class="gs-lbl">وفاة سنوية بسبب السكري</div></div>
+    <div class="global-stat"><div class="gs-icon">🧒</div><div class="gs-num">1.2M</div><div class="gs-lbl">طفل مصاب بالنوع الأول</div></div>
+    <div class="global-stat"><div class="gs-icon">📈</div><div class="gs-num">+16%</div><div class="gs-lbl">ارتفاع خلال 5 سنوات</div></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ WHAT IS ═══════════ -->
+<section id="what">
+  <div class="section-label">الأساسيات</div>
+  <h2 class="section-title">ما هو مرض السكري؟</h2>
+  <div class="what-grid reveal">
+    <div class="what-content">
+      <p>مرض السكري (Diabetes Mellitus) هو مجموعة من الأمراض الأيضية المزمنة التي تتميز بارتفاع مستوى الجلوكوز في الدم، نتيجة خلل في إفراز الأنسولين أو عمله أو كليهما.</p>
+      <p>الأنسولين هرمون تُفرزه خلايا بيتا في البنكرياس، ويعمل كـ"مفتاح" يفتح أبواب خلايا الجسم للسماح للجلوكوز بالدخول وتحويله إلى طاقة.</p>
+      <p>عندما يعجز الجسم عن إنتاج كمية كافية من الأنسولين أو استخدامه بفعالية، يتراكم الجلوكوز في مجرى الدم مسبباً تلفاً تدريجياً في الأوعية الدموية والأعصاب والأعضاء الحيوية.</p>
+      <p>السكري مرض مزمن يحتاج إدارة مستمرة، لكن مع العلاج الصحيح يمكن العيش بحياة طبيعية وصحية تماماً.</p>
+    </div>
+    <div class="insulin-visual">
+      <div class="center-orb">
+        <div class="orb-icon">🫁</div>
+        <div class="orb-lbl">البنكرياس</div>
+      </div>
+      <div class="orbit-item">💉 الأنسولين</div>
+      <div class="orbit-item">🩸 الجلوكوز</div>
+      <div class="orbit-item">⚡ الطاقة</div>
+      <div class="orbit-item">🧬 الخلايا</div>
+      <div class="orbit-item">🔬 الهرمونات</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ TYPES ═══════════ -->
+<section id="types">
+  <div class="section-label">التصنيف الطبي</div>
+  <h2 class="section-title">أنواع مرض السكري</h2>
+  <p class="section-desc">يُصنَّف مرض السكري إلى أربعة أنواع رئيسية، لكلٍّ منها أسبابه وآليته وطريقة علاجه الخاصة</p>
+  <div class="types-grid reveal">
+    <div class="type-card t1">
+      <div class="type-icon">🧬</div>
+      <h3>النوع الأول (T1DM)</h3>
+      <p>مرض مناعي ذاتي يهاجم جهاز المناعة خلايا بيتا في البنكرياس المسؤولة عن إنتاج الأنسولين مما يؤدي إلى توقف إنتاجه تماماً. يظهر غالباً في الطفولة والمراهقة وسبيل علاجه الأنسولين مدى الحياة.</p>
+      <span class="type-tag">10% من الحالات</span>
+    </div>
+    <div class="type-card t2">
+      <div class="type-icon">⚖️</div>
+      <h3>النوع الثاني (T2DM)</h3>
+      <p>الأكثر شيوعاً (90% من الحالات). يتميز بمقاومة خلايا الجسم للأنسولين مع قصور تدريجي في إفرازه. مرتبط بنمط الحياة والسمنة، ويمكن الوقاية منه وتأخيره بشكل فعّال.</p>
+      <span class="type-tag">90% من الحالات</span>
+    </div>
+    <div class="type-card tg">
+      <div class="type-icon">🤰</div>
+      <h3>سكري الحمل (GDM)</h3>
+      <p>يظهر أثناء الحمل عند نساء لم يُشخَّصن بالسكري قبله. هرمونات المشيمة تقلل فاعلية الأنسولين. يختفي بعد الولادة لكنه يزيد خطر النوع الثاني مستقبلاً بنسبة 50%.</p>
+      <span class="type-tag">2-10% من حالات الحمل</span>
+    </div>
+    <div class="type-card t15">
+      <div class="type-icon">🔬</div>
+      <h3>MODY / الأنواع النادرة</h3>
+      <p>سكري الشباب ذو الأصل الوراثي (MODY) ناتج عن طفرات جينية تؤثر على وظيفة البنكرياس. أيضاً السكري الثانوي للأمراض الأخرى مثل التهاب البنكرياس والأورام.</p>
+      <span class="type-tag">أنواع نادرة 1-5%</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ SYMPTOMS ═══════════ -->
+<section id="symptoms">
+  <div class="section-label">التعرف المبكر</div>
+  <h2 class="section-title">أعراض مرض السكري</h2>
+  <p class="section-desc">الكشف المبكر يُنقذ الأرواح — تعرّف على هذه العلامات التحذيرية</p>
+  <div class="symptoms-bg reveal">
+    <div class="symptoms-grid">
+      <div class="symptom-item"><span class="symptom-icon">🚽</span><span>كثرة التبول خاصةً ليلاً (Polyuria)</span></div>
+      <div class="symptom-item"><span class="symptom-icon">💧</span><span>العطش الشديد المستمر (Polydipsia)</span></div>
+      <div class="symptom-item"><span class="symptom-icon">🍽️</span><span>الجوع الدائم رغم الأكل (Polyphagia)</span></div>
+      <div class="symptom-item"><span class="symptom-icon">😴</span><span>الإرهاق الشديد وفقدان الطاقة</span></div>
+      <div class="symptom-item"><span class="symptom-icon">👁️</span><span>ضبابية الرؤية المتكررة</span></div>
+      <div class="symptom-item"><span class="symptom-icon">⚖️</span><span>فقدان الوزن غير المبرر</span></div>
+      <div class="symptom-item"><span class="symptom-icon">🩹</span><span>بطء التئام الجروح والقروح</span></div>
+      <div class="symptom-item"><span class="symptom-icon">🦟</span><span>تكرار العدوى الجلدية والبولية</span></div>
+      <div class="symptom-item"><span class="symptom-icon">🖐️</span><span>تنميل ووخز في اليدين والقدمين</span></div>
+      <div class="symptom-item"><span class="symptom-icon">🦷</span><span>جفاف الفم والتهابات اللثة</span></div>
+      <div class="symptom-item"><span class="symptom-icon">🧠</span><span>صعوبة التركيز وضبابية الذهن</span></div>
+      <div class="symptom-item"><span class="symptom-icon">😤</span><span>رائحة أسيتون في الزفير (كيتو)</span></div>
+      <div class="symptom-item"><span class="symptom-icon">🫀</span><span>الغثيان وآلام البطن المفاجئة</span></div>
+      <div class="symptom-item"><span class="symptom-icon">😠</span><span>تقلبات مزاجية وتهيّج</span></div>
+      <div class="symptom-item"><span class="symptom-icon">🌙</span><span>التعرق الليلي الغزير</span></div>
+      <div class="symptom-item"><span class="symptom-icon">💪</span><span>ضعف العضلات وتشنجات الساق</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ BLOOD SUGAR CHART ═══════════ -->
+<section id="chart">
+  <div class="section-label">مستويات السكر</div>
+  <h2 class="section-title">مقارنة مستويات سكر الدم</h2>
+  <div class="chart-wrap reveal">
+    <div class="chart-title">📊 مستوى سكر الصيام — معدلات مرجعية (ملغ/دل)</div>
+    <div class="chart-lines">
+      <div class="chart-line" style="bottom:0%"><span class="chart-line-lbl">0</span></div>
+      <div class="chart-line" style="bottom:25%"><span class="chart-line-lbl">50</span></div>
+      <div class="chart-line" style="bottom:50%"><span class="chart-line-lbl">100</span></div>
+      <div class="chart-line" style="bottom:75%"><span class="chart-line-lbl">150</span></div>
+      <div class="chart-line" style="bottom:100%"><span class="chart-line-lbl">200</span></div>
+    </div>
+    <div class="chart-area">
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="height:35%;background:linear-gradient(to top,#00c9a7,rgba(0,201,167,0.4));animation:growBar 1s 0.1s ease both;">
+          <div class="chart-tooltip">هبوط السكر: أقل من 70 ملغ/دل</div>
+        </div>
+        <div class="chart-bar-lbl">هبوط</div>
+      </div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="height:50%;background:linear-gradient(to top,#00c9a7,rgba(0,201,167,0.5));animation:growBar 1s 0.2s ease both;">
+          <div class="chart-tooltip">طبيعي: 70-99 ملغ/دل</div>
+        </div>
+        <div class="chart-bar-lbl">طبيعي</div>
+      </div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="height:62%;background:linear-gradient(to top,#f5a623,rgba(245,166,35,0.4));animation:growBar 1s 0.3s ease both;">
+          <div class="chart-tooltip">ما قبل السكري: 100-125 ملغ/دل</div>
+        </div>
+        <div class="chart-bar-lbl">ما قبل</div>
+      </div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="height:85%;background:linear-gradient(to top,#e84545,rgba(232,69,69,0.4));animation:growBar 1s 0.4s ease both;">
+          <div class="chart-tooltip">سكري: 126+ ملغ/دل</div>
+        </div>
+        <div class="chart-bar-lbl">سكري</div>
+      </div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar" style="height:100%;background:linear-gradient(to top,#b91c1c,rgba(185,28,28,0.5));animation:growBar 1s 0.5s ease both;">
+          <div class="chart-tooltip">خطر: أكثر من 200 ملغ/دل</div>
+        </div>
+        <div class="chart-bar-lbl">خطر</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--glass-border);">
+      <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;"><div style="width:14px;height:14px;border-radius:4px;background:var(--teal)"></div>طبيعي / هبوط</div>
+      <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;"><div style="width:14px;height:14px;border-radius:4px;background:var(--gold)"></div>ما قبل السكري</div>
+      <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;"><div style="width:14px;height:14px;border-radius:4px;background:var(--accent)"></div>سكري / خطر</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ CAUSES ═══════════ -->
+<section id="causes">
+  <div class="section-label">الجذور والمسببات</div>
+  <h2 class="section-title">أسباب وعوامل الخطر</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="reveal">
+    <div>
+      <h3 style="font-size:1rem;margin-bottom:1.5rem;color:#ff8080;font-weight:700;">🧬 النوع الأول — مناعي ذاتي</h3>
+      <div class="causes-timeline">
+        <div class="cause-item"><h4>العوامل الجينية HLA</h4><p>وجود جينات HLA-DR3 وHLA-DR4 يزيد قابلية الإصابة بالاستجابة المناعية الخاطئة ضد خلايا بيتا بشكل كبير</p></div>
+        <div class="cause-item"><h4>المحفزات البيئية</h4><p>الفيروسات كـEnterovirus وكوكساكي B قد تُشكّل محفزاً لبدء الاستجابة المناعية المدمرة لخلايا البنكرياس</p></div>
+        <div class="cause-item"><h4>المناعة الذاتية</h4><p>يُنتج الجسم أجساماً مضادة تستهدف خلايا بيتا وتدمرها تدريجياً حتى لا يتبقى منها ما يكفي لإنتاج الأنسولين</p></div>
+        <div class="cause-item"><h4>نقص فيتامين D</h4><p>الأبحاث تُشير إلى دور نقص فيتامين D في تنشيط المناعة الذاتية، خاصةً في المناطق الشمالية قليلة الشمس</p></div>
+      </div>
+    </div>
+    <div>
+      <h3 style="font-size:1rem;margin-bottom:1.5rem;color:var(--gold);font-weight:700;">⚖️ النوع الثاني — نمط الحياة</h3>
+      <div class="causes-timeline" style="border-right-color:rgba(245,166,35,0.4);">
+        <div class="cause-item"><h4>السمنة ودهون البطن</h4><p>الدهون الحشوية تُفرز مواد التهابية تُعطل عمل مستقبلات الأنسولين وترفع مقاومته في كافة أنسجة الجسم</p></div>
+        <div class="cause-item"><h4>الخمول البدني الكامل</h4><p>العضلات غير المتدربة تستهلك جلوكوزاً أقل وتحتاج أنسولين أكثر، مما يُرهق البنكرياس تدريجياً</p></div>
+        <div class="cause-item"><h4>النظام الغذائي المضر</h4><p>إفراط السكريات والدهون المشبعة والأطعمة المكررة يُضعف حساسية الأنسولين على المدى البعيد</p></div>
+        <div class="cause-item"><h4>العمر والوراثة</h4><p>خطر الإصابة يتضاعف بعد 45 عاماً، ووجود أحد الوالدين مصاباً يرفع الخطر 40% والاثنين 70%</p></div>
+        <div class="cause-item"><h4>قلة النوم والتوتر</h4><p>ارتفاع الكورتيزول المزمن بسبب الإجهاد وقلة النوم يرفع سكر الدم ويُقلل حساسية الأنسولين</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ DIAGNOSIS ═══════════ -->
+<section id="diagnosis">
+  <div class="section-label">التشخيص المختبري</div>
+  <h2 class="section-title">كيف يُشخَّص مرض السكري؟</h2>
+  <p class="section-desc">معايير جمعية السكري الأمريكية (ADA) للتشخيص</p>
+  <div class="diag-cards reveal">
+    <div class="diag-card"><div class="diag-icon">🩸</div><h4>سكر الصيام FPG</h4><div class="range">FPG</div><p>طبيعي: أقل من 100<br>ما قبل السكري: 100–125<br><span style="color:#ff8080;font-weight:700;">سكري: 126+ ملغ/دل</span><br><small style="color:rgba(240,244,255,0.4)">8 ساعات صيام كاملة</small></p></div>
+    <div class="diag-card"><div class="diag-icon">⏱️</div><h4>تحمّل الجلوكوز OGTT</h4><div class="range">OGTT</div><p>بعد ساعتين من شرب 75غ جلوكوز<br>طبيعي: أقل من 140<br>ما قبل: 140–199<br><span style="color:#ff8080;font-weight:700;">سكري: 200+ ملغ/دل</span></p></div>
+    <div class="diag-card"><div class="diag-icon">📊</div><h4>الهيموغلوبين السكري</h4><div class="range">HbA1c</div><p>طبيعي: أقل من 5.7%<br>ما قبل السكري: 5.7–6.4%<br><span style="color:#ff8080;font-weight:700;">سكري: 6.5% فأكثر</span><br><small style="color:rgba(240,244,255,0.4)">معدل 3 أشهر</small></p></div>
+    <div class="diag-card"><div class="diag-icon">🔴</div><h4>السكر العشوائي RBS</h4><div class="range">RBS</div><p>في أي وقت بدون صيام<br>مع أعراض السكري:<br><span style="color:#ff8080;font-weight:700;">200+ ملغ/دل = تشخيص</span><br><small style="color:rgba(240,244,255,0.4)">مع أعراض واضحة</small></p></div>
+    <div class="diag-card"><div class="diag-icon">🫀</div><h4>الفحص الشامل الدوري</h4><div class="range">Screen</div><p>كل 3 سنوات من عمر 35+<br>سنوياً إذا كنت في دائرة الخطر<br><span style="color:var(--teal);font-weight:700;">الكشف المبكر ينقذ الحياة</span></p></div>
+    <div class="diag-card"><div class="diag-icon">🧪</div><h4>مؤشرات إضافية</h4><div class="range">Labs</div><p>سكر ما بعد الوجبة (2h PP)<br>نسبة الفركتوزامين<br>الببتيد C لتقييم وظيفة البنكرياس</p></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ TREATMENT ═══════════ -->
+<section id="treatment">
+  <div class="section-label">العلاج والإدارة</div>
+  <h2 class="section-title">خيارات علاج مرض السكري</h2>
+  <p class="section-desc">العلاج الحديث متعدد الأبعاد — لا يقتصر على الأدوية فقط</p>
+  <div class="treatment-tabs reveal">
+    <button class="tab-btn active" onclick="showTab('meds',this)">💊 الأدوية</button>
+    <button class="tab-btn" onclick="showTab('lifestyle',this)">🏃 نمط الحياة</button>
+    <button class="tab-btn" onclick="showTab('monitor',this)">📱 المراقبة</button>
+    <button class="tab-btn" onclick="showTab('surgery',this)">🔪 الجراحة</button>
+    <button class="tab-btn" onclick="showTab('tech',this)">🤖 التكنولوجيا</button>
+    <button class="tab-btn" onclick="showTab('complications2',this)">⚠️ المضاعفات</button>
+  </div>
+  <div id="meds" class="tab-content active">
+    <div class="treat-item"><div class="treat-num">1</div><div><h5>الأنسولين (أنواع متعددة)</h5><p>ضروري للنوع الأول تماماً وقد يُستخدم في النوع الثاني المتقدم. أنواع: سريع المفعول (Lispro)، متوسط (NPH)، بطيء (Glargine)، مزيج.</p></div></div>
+    <div class="treat-item"><div class="treat-num">2</div><div><h5>الميتفورمين (Metformin)</h5><p>الخط الأول للنوع الثاني. يقلل إنتاج الكبد للجلوكوز ويحسن حساسية الأنسولين. آمن وغير مكلف ومتوفر على نطاق واسع.</p></div></div>
+    <div class="treat-item"><div class="treat-num">3</div><div><h5>مثبطات SGLT-2</h5><p>تُفرز الجلوكوز الزائد عبر البول وتحمي القلب والكلى. أمثلة: إمباغليفلوزين، داباغليفلوزين، كاناغليفلوزين.</p></div></div>
+    <div class="treat-item"><div class="treat-num">4</div><div><h5>ناهضات GLP-1</h5><p>تحاكي هرمون GLP-1 وتُحفّز الأنسولين وتقلل الشهية والوزن. أمثلة: سيماغلوتيد (Ozempic)، ليراغلوتيد.</p></div></div>
+    <div class="treat-item"><div class="treat-num">5</div><div><h5>السلفونيل يوريا</h5><p>تحفز البنكرياس على إفراز الأنسولين. فعّالة وغير مكلفة لكن قد تسبب هبوط السكر وزيادة الوزن.</p></div></div>
+    <div class="treat-item"><div class="treat-num">6</div><div><h5>مثبطات DPP-4</h5><p>تزيد عمر هرمون الإنكريتين الذي يحفز إفراز الأنسولين. محايدة للوزن وآمنة. أمثلة: سيتاغليبتين، ساكساغليبتين.</p></div></div>
+  </div>
+  <div id="lifestyle" class="tab-content">
+    <div class="treat-item"><div class="treat-num">🏃</div><div><h5>التمارين الهوائية</h5><p>المشي والسباحة والدراجة 150 دقيقة/أسبوع تحسن حساسية الأنسولين وتحرق الجلوكوز بشكل مستقل عن الأنسولين.</p></div></div>
+    <div class="treat-item"><div class="treat-num">💪</div><div><h5>تمارين القوة</h5><p>بناء العضلات يزيد استهلاك الجلوكوز. جلسات 2-3 مرات/أسبوع تحسن التحكم في السكر بشكل ملحوظ.</p></div></div>
+    <div class="treat-item"><div class="treat-num">🥗</div><div><h5>النظام الغذائي العلاجي</h5><p>العمل مع أخصائي تغذية لوضع خطة شخصية. حساب الكربوهيدرات (Carb counting) أداة قوية للتحكم.</p></div></div>
+    <div class="treat-item"><div class="treat-num">😴</div><div><h5>صحة النوم وإدارة التوتر</h5><p>7-9 ساعات نوم يومياً. التأمل والتنفس العميق واليوغا تقلل الكورتيزول وتحسن مستوى السكر.</p></div></div>
+  </div>
+  <div id="monitor" class="tab-content">
+    <div class="treat-item"><div class="treat-num">📟</div><div><h5>جهاز قياس الجلوكوز المنزلي</h5><p>قياس منتظم قبل الوجبات وبعدها لفهم الاستجابة الغذائية وضبط الجرعات الدوائية بدقة.</p></div></div>
+    <div class="treat-item"><div class="treat-num">📡</div><div><h5>أجهزة CGM المستمرة</h5><p>مستشعر يُثبَّت تحت الجلد يُرسل قراءات كل دقيقتين للهاتف. Libre, Dexcom من أشهر الأنواع.</p></div></div>
+    <div class="treat-item"><div class="treat-num">📋</div><div><h5>فحص HbA1c الدوري</h5><p>كل 3 أشهر حتى تحقيق الهدف (أقل من 7%)، ثم كل 6 أشهر. يعكس متوسط السكر على مدار 3 أشهر.</p></div></div>
+    <div class="treat-item"><div class="treat-num">👁️</div><div><h5>فحوصات دورية شاملة</h5><p>قاع العين سنوياً، وظائف الكلى (Creatinine, eGFR)، القدمين، ضغط الدم، الكوليسترول.</p></div></div>
+  </div>
+  <div id="surgery" class="tab-content">
+    <div class="treat-item"><div class="treat-num">🔪</div><div><h5>جراحة البدانة (Bariatric)</h5><p>تكميم المعدة أو المجازة المعوية تُحقق مغفرة السكري في 50-80% من مرضى النوع الثاني مع البدانة الشديدة.</p></div></div>
+    <div class="treat-item"><div class="treat-num">🫁</div><div><h5>زراعة البنكرياس</h5><p>خيار لمرضى النوع الأول المتقدم. نجاح الزراعة يُلغي الحاجة للأنسولين تماماً. يحتاج أدوية لمنع الرفض مدى الحياة.</p></div></div>
+    <div class="treat-item"><div class="treat-num">🔬</div><div><h5>زراعة خلايا جزر لانغرهانس</h5><p>حقن خلايا بيتا المنتجة للأنسولين من متبرع. تقنية واعدة لا تزال في طور التطوير والتجريب.</p></div></div>
+  </div>
+  <div id="tech" class="tab-content">
+    <div class="treat-item"><div class="treat-num">🤖</div><div><h5>البنكرياس الاصطناعي (AID)</h5><p>نظام مغلق يجمع بين CGM ومضخة الأنسولين وخوارزمية ذكاء اصطناعي تضبط جرعة الأنسولين تلقائياً.</p></div></div>
+    <div class="treat-item"><div class="treat-num">📱</div><div><h5>تطبيقات إدارة السكري</h5><p>MySugr, Glooko, One Drop — تتبع السكر والأدوية والطعام وتُنتج تقارير مفصلة للطبيب.</p></div></div>
+    <div class="treat-item"><div class="treat-num">💻</div><div><h5>الرعاية الصحية عن بُعد</h5><p>متابعة الطبيب عن بُعد مع مشاركة بيانات الجهاز في الوقت الفعلي تحسن التحكم بشكل ملحوظ.</p></div></div>
+    <div class="treat-item"><div class="treat-num">🧬</div><div><h5>العلاج الجيني (مستقبلي)</h5><p>أبحاث واعدة لتصحيح الخلل الجيني أو إعادة برمجة خلايا الجسم لإنتاج الأنسولين بشكل طبيعي.</p></div></div>
+  </div>
+  <div id="complications2" class="tab-content">
+    <div class="treat-item"><div class="treat-num">❤️</div><div><h5>أمراض القلب والأوعية</h5><p>2-4 أضعاف خطر الأزمات القلبية والسكتة الدماغية. السبب الأول للوفاة بين مرضى السكري.</p></div></div>
+    <div class="treat-item"><div class="treat-num">🫘</div><div><h5>اعتلال الكلى السكري</h5><p>السكري السبب الأول للفشل الكلوي عالمياً. يبدأ بتسرب البروتين في البول ويتطور لفشل كلوي تام.</p></div></div>
+    <div class="treat-item"><div class="treat-num">👁️</div><div><h5>اعتلال الشبكية</h5><p>السبب الأول للعمى عند البالغين بين 20-74 سنة. فحص سنوي منتظم يكشفه مبكراً قبل الضرر الدائم.</p></div></div>
+    <div class="treat-item"><div class="treat-num">🦵</div><div><h5>القدم السكرية والبتر</h5><p>نقص التروية وتلف الأعصاب يُعطل التئام الجروح. السكري مسؤول عن 60% من حالات بتر الأطراف غير الرضية.</p></div></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ NUTRITION ═══════════ -->
+<section id="nutrition">
+  <div class="section-label">التغذية العلاجية</div>
+  <h2 class="section-title">دليل التغذية لمريض السكري</h2>
+  <p class="section-desc">الطعام أداة علاجية — ما تأكله يحدد مستوى سكرك مباشرة</p>
+  <div class="food-grid reveal">
+    <div class="food-col allowed">
+      <h4>✅ مُوصى بها — مؤشر جلايسيمي منخفض</h4>
+      <ul class="food-list">
+        <li>🥦 خضروات ورقية (سبانخ، بروكلي، ملوخية)</li>
+        <li>🐟 سمك دهني غني بأوميغا-3 (سالمون، سردين)</li>
+        <li>🥚 بيض — مصدر بروتين ممتاز ومشبع</li>
+        <li>🥜 مكسرات نيئة (لوز 15 حبة، جوز 3 حبات)</li>
+        <li>🫐 توت وفراولة — مؤشر جلايسيمي منخفض</li>
+        <li>🌾 شوفان كامل وكينوا وخبز الحبوب الكاملة</li>
+        <li>🫘 عدس وحمص وفاصوليا — ألياف وبروتين</li>
+        <li>🫒 زيت الزيتون البكر — دهون صحية</li>
+        <li>🥑 أفوكادو — ألياف ودهون غير مشبعة</li>
+        <li>🧄 ثوم وزنجبيل وكركم — خصائص مضادة للالتهاب</li>
+        <li>🫐 تفاح بقشره — ألياف تبطئ امتصاص السكر</li>
+        <li>🥛 زبادي يوناني خالي الدسم بدون سكر</li>
+      </ul>
+    </div>
+    <div class="food-col avoid">
+      <h4>❌ يجب تجنبها — ترفع السكر بسرعة</h4>
+      <ul class="food-list">
+        <li>🍰 الحلوى والكيك والسكريات المكررة</li>
+        <li>🥤 مشروبات غازية وعصائر معبأة</li>
+        <li>🍞 خبز أبيض وأرز أبيض ومكرونة مكررة</li>
+        <li>🍟 أطعمة مقلية عالية الدهون المشبعة</li>
+        <li>🍔 وجبات سريعة وأغذية مصنعة ومعلبة</li>
+        <li>🍺 الكحول — يسبب تقلبات خطيرة في السكر</li>
+        <li>🍫 الشوكولاتة الحليب والحلويات السكرية</li>
+        <li>🥐 المعجنات والنشويات عالية المؤشر</li>
+        <li>🍦 آيس كريم وحلويات الألبان الدسمة</li>
+        <li>🧂 أطعمة عالية الصوديوم تضر الكلى</li>
+        <li>🍒 فاكهة عالية السكر: بلح، عنب، مانجو بكميات كبيرة</li>
+        <li>🧃 العصائر الطبيعية (تفقد الألياف الواقية)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- GI Table -->
+  <div style="margin-top:2rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:22px;padding:2rem;" class="reveal">
+    <h3 style="margin-bottom:1.5rem;font-size:1rem;font-weight:700;">📊 المؤشر الجلايسيمي — جدول مرجعي سريع</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+      <div style="padding:1rem;background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.2);border-radius:14px;text-align:center;">
+        <div style="font-size:1.3rem;font-weight:900;color:var(--teal);">منخفض ≤55</div>
+        <div style="font-size:1.6rem;margin:0.5rem 0;">🟢</div>
+        <div style="font-size:0.78rem;color:rgba(240,244,255,0.6);line-height:1.6;">شوفان، عدس، تفاح، فراولة<br>خضروات، زبادي، مكسرات</div>
+      </div>
+      <div style="padding:1rem;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);border-radius:14px;text-align:center;">
+        <div style="font-size:1.3rem;font-weight:900;color:var(--gold);">متوسط 56–70</div>
+        <div style="font-size:1.6rem;margin:0.5rem 0;">🟡</div>
+        <div style="font-size:0.78rem;color:rgba(240,244,255,0.6);line-height:1.6;">أرز بني، خبز كامل<br>بطاطا حلوة، موز ناضج</div>
+      </div>
+      <div style="padding:1rem;background:rgba(232,69,69,0.08);border:1px solid rgba(232,69,69,0.2);border-radius:14px;text-align:center;">
+        <div style="font-size:1.3rem;font-weight:900;color:#ff8080;">مرتفع >70</div>
+        <div style="font-size:1.6rem;margin:0.5rem 0;">🔴</div>
+        <div style="font-size:0.78rem;color:rgba(240,244,255,0.6);line-height:1.6;">أرز أبيض، خبز أبيض<br>بطاطا مهروسة، تمر، عصائر</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ MEAL PLANNER ═══════════ -->
+<section id="meal-plan">
+  <div class="section-label">التخطيط الغذائي</div>
+  <h2 class="section-title">خطة وجبات أسبوعية صحية</h2>
+  <p class="section-desc">نماذج وجبات متوازنة خاصة بمريض السكري — مؤشر جلايسيمي منخفض وغنية بالألياف</p>
+  <div class="meal-planner reveal">
+    <div class="meal-days">
+      <button class="day-btn active" onclick="showMeal(0,this)">الأحد</button>
+      <button class="day-btn" onclick="showMeal(1,this)">الاثنين</button>
+      <button class="day-btn" onclick="showMeal(2,this)">الثلاثاء</button>
+      <button class="day-btn" onclick="showMeal(3,this)">الأربعاء</button>
+      <button class="day-btn" onclick="showMeal(4,this)">الخميس</button>
+      <button class="day-btn" onclick="showMeal(5,this)">الجمعة</button>
+      <button class="day-btn" onclick="showMeal(6,this)">السبت</button>
+    </div>
+    <div class="meal-cards" id="mealCards"></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ EXERCISE ═══════════ -->
+<section id="exercise">
+  <div class="section-label">النشاط البدني</div>
+  <h2 class="section-title">الرياضة وحرق السعرات لمريض السكري</h2>
+  <p class="section-desc">اختر رياضتك لمعرفة تأثيرها على سكر الدم والسعرات المحروقة</p>
+  <div class="exercise-grid reveal" id="exerciseGrid"></div>
+  <div class="exercise-summary" id="exerciseSummary">
+    <div class="ex-sum-item"><div class="sv" id="exCalBurn">0</div><div class="sl">سعرة محروقة/ساعة</div></div>
+    <div class="ex-sum-item"><div class="sv" id="exGlucDrop">0</div><div class="sl">ملغ/دل انخفاض محتمل</div></div>
+    <div class="ex-sum-item"><div class="sv" id="exInsulin">0%</div><div class="sl">تحسن حساسية الأنسولين</div></div>
+    <div class="ex-sum-item"><div class="sv" id="exRating">⭐</div><div class="sl">مناسبة لمريض السكري</div></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ CALCULATOR ═══════════ -->
+<section id="calculator">
+  <div class="section-label">أدوات تفاعلية</div>
+  <h2 class="section-title">حاسبات صحية ذكية</h2>
+  <div class="calc-wrapper reveal">
+    <h3>🧮 مركز الحسابات الصحية</h3>
+    <p class="subtitle">أدوات تقييم شخصية دقيقة</p>
+    <div class="calc-tabs">
+      <button class="calc-tab active" onclick="showCalcPanel('glucose',this)">🩸 سكر الدم</button>
+      <button class="calc-tab" onclick="showCalcPanel('bmi',this)">⚖️ مؤشر الكتلة</button>
+      <button class="calc-tab" onclick="showCalcPanel('hba1c',this)">📊 HbA1c</button>
+      <button class="calc-tab" onclick="showCalcPanel('risk',this)">⚠️ تقييم الخطر</button>
+    </div>
+
+    <!-- GLUCOSE -->
+    <div class="calc-panel active" id="glucosePanel">
+      <div class="calc-row"><label>نوع القياس</label><select id="measureType" onchange="updateLabel()"><option value="fasting">سكر الصيام (8 ساعات امتناع)</option><option value="random">سكر عشوائي</option><option value="postmeal">سكر بعد الأكل (ساعتان)</option></select></div>
+      <div class="calc-row"><label id="glucoseLabel">مستوى السكر (ملغ/دل)</label><input type="number" id="glucoseVal" placeholder="مثال: 95" min="20" max="700"></div>
+      <button class="calc-btn" onclick="calcGlucose()">تحليل النتيجة</button>
+      <div class="calc-result" id="calcResult"><div class="result-val" id="resultVal"></div><div class="result-msg" id="resultMsg"></div></div>
+    </div>
+
+    <!-- BMI -->
+    <div class="calc-panel" id="bmiPanel">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="calc-row"><label>الطول (سم)</label><input type="number" id="height" placeholder="مثال: 170"></div>
+        <div class="calc-row"><label>الوزن (كغ)</label><input type="number" id="weight" placeholder="مثال: 75"></div>
+      </div>
+      <button class="calc-btn" onclick="calcBMI()">احسب مؤشر الكتلة</button>
+      <div class="calc-result" id="bmiResult"><div class="result-val" id="bmiVal"></div><div class="result-msg" id="bmiMsg"></div>
+        <div class="bmi-result-bars" id="bmiBar">
+          <div class="bmi-bar-wrap">
+            <div class="bmi-seg" style="background:#3b82f6;flex:5">نحيف</div>
+            <div class="bmi-seg" style="background:#00c9a7;flex:7">طبيعي</div>
+            <div class="bmi-seg" style="background:#f5a623;flex:5">زيادة</div>
+            <div class="bmi-seg" style="background:#e84545;flex:8">بدانة</div>
+          </div>
+          <div class="bmi-indicator"><div class="bmi-arrow" id="bmiArrow"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HBA1C -->
+    <div class="calc-panel" id="hba1cPanel">
+      <div class="calc-row"><label>نسبة HbA1c (%)</label><input type="number" id="hba1cVal" placeholder="مثال: 6.5" step="0.1" min="4" max="20"></div>
+      <button class="calc-btn" onclick="calcHbA1c()">تحليل HbA1c</button>
+      <div class="calc-result" id="hba1cResult"><div class="result-val" id="hba1cRes"></div><div class="result-msg" id="hba1cMsg"></div></div>
+    </div>
+
+    <!-- RISK -->
+    <div class="calc-panel" id="riskPanel">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1rem;">
+        <label style="display:flex;align-items:center;gap:0.5rem;padding:0.7rem;background:var(--glass);border-radius:10px;cursor:pointer;font-size:0.85rem;border:1px solid var(--glass-border);"><input type="checkbox" id="r1" style="accent-color:var(--teal);"> عمري فوق 45 سنة</label>
+        <label style="display:flex;align-items:center;gap:0.5rem;padding:0.7rem;background:var(--glass);border-radius:10px;cursor:pointer;font-size:0.85rem;border:1px solid var(--glass-border);"><input type="checkbox" id="r2" style="accent-color:var(--teal);"> لدي تاريخ عائلي</label>
+        <label style="display:flex;align-items:center;gap:0.5rem;padding:0.7rem;background:var(--glass);border-radius:10px;cursor:pointer;font-size:0.85rem;border:1px solid var(--glass-border);"><input type="checkbox" id="r3" style="accent-color:var(--teal);"> أعاني من السمنة</label>
+        <label style="display:flex;align-items:center;gap:0.5rem;padding:0.7rem;background:var(--glass);border-radius:10px;cursor:pointer;font-size:0.85rem;border:1px solid var(--glass-border);"><input type="checkbox" id="r4" style="accent-color:var(--teal);"> ضغط الدم مرتفع</label>
+        <label style="display:flex;align-items:center;gap:0.5rem;padding:0.7rem;background:var(--glass);border-radius:10px;cursor:pointer;font-size:0.85rem;border:1px solid var(--glass-border);"><input type="checkbox" id="r5" style="accent-color:var(--teal);"> قليل الحركة جداً</label>
+        <label style="display:flex;align-items:center;gap:0.5rem;padding:0.7rem;background:var(--glass);border-radius:10px;cursor:pointer;font-size:0.85rem;border:1px solid var(--glass-border);"><input type="checkbox" id="r6" style="accent-color:var(--teal);"> مدخن أو سبق لي التدخين</label>
+        <label style="display:flex;align-items:center;gap:0.5rem;padding:0.7rem;background:var(--glass);border-radius:10px;cursor:pointer;font-size:0.85rem;border:1px solid var(--glass-border);"><input type="checkbox" id="r7" style="accent-color:var(--teal);"> نومي مضطرب (أقل من 6 ساعات)</label>
+        <label style="display:flex;align-items:center;gap:0.5rem;padding:0.7rem;background:var(--glass);border-radius:10px;cursor:pointer;font-size:0.85rem;border:1px solid var(--glass-border);"><input type="checkbox" id="r8" style="accent-color:var(--teal);"> سبق تشخيصي بسكر الحمل</label>
+      </div>
+      <button class="calc-btn" onclick="calcRisk()">تقييم مستوى الخطر</button>
+      <div class="calc-result" id="riskResult"><div class="result-val" id="riskRes"></div><div class="result-msg" id="riskMsg"></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ BLOOD SUGAR LOG ═══════════ -->
+<section id="log">
+  <div class="section-label">المتابعة الشخصية</div>
+  <h2 class="section-title">سجّل قراءاتك اليومية</h2>
+  <p class="section-desc">تتبع مستويات سكرك بانتظام — بيانات مرتبة تساعدك وطبيبك على ضبط العلاج</p>
+  <div class="log-wrap reveal">
+    <div class="log-form">
+      <div><label style="font-size:0.78rem;color:rgba(240,244,255,0.6);display:block;margin-bottom:0.3rem;">التاريخ والوقت</label><input type="datetime-local" id="logDate"></div>
+      <div><label style="font-size:0.78rem;color:rgba(240,244,255,0.6);display:block;margin-bottom:0.3rem;">توقيت القياس</label>
+        <select id="logType">
+          <option>قبل الإفطار</option><option>بعد الإفطار</option>
+          <option>قبل الغداء</option><option>بعد الغداء</option>
+          <option>قبل العشاء</option><option>بعد العشاء</option>
+          <option>وقت النوم</option><option>عشوائي</option>
+        </select>
+      </div>
+      <div><label style="font-size:0.78rem;color:rgba(240,244,255,0.6);display:block;margin-bottom:0.3rem;">مستوى السكر (ملغ/دل)</label><input type="number" id="logValue" placeholder="مثال: 120" min="20" max="700"></div>
+      <button class="add-log-btn" onclick="addLogEntry()">➕ أضف</button>
+    </div>
+    <div class="log-table-wrap">
+      <table class="log-table">
+        <thead><tr><th>التاريخ والوقت</th><th>التوقيت</th><th>المستوى</th><th>الحالة</th><th>حذف</th></tr></thead>
+        <tbody id="logTableBody"><tr><td colspan="5" style="text-align:center;color:rgba(240,244,255,0.35);padding:2rem;font-size:0.85rem;">لا توجد قراءات بعد — ابدأ بإضافة قراءتك الأولى</td></tr></tbody>
+      </table>
+    </div>
+    <div id="logStats" style="display:none;margin-top:1.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+      <div style="text-align:center;padding:1rem;background:var(--glass);border-radius:12px;border:1px solid var(--glass-border);"><div style="font-size:1.4rem;font-weight:900;color:var(--teal)" id="logAvg">—</div><div style="font-size:0.75rem;color:rgba(240,244,255,0.5)">المتوسط</div></div>
+      <div style="text-align:center;padding:1rem;background:var(--glass);border-radius:12px;border:1px solid var(--glass-border);"><div style="font-size:1.4rem;font-weight:900;color:#00c9a7" id="logMin">—</div><div style="font-size:0.75rem;color:rgba(240,244,255,0.5)">الأدنى</div></div>
+      <div style="text-align:center;padding:1rem;background:var(--glass);border-radius:12px;border:1px solid var(--glass-border);"><div style="font-size:1.4rem;font-weight:900;color:#f5a623" id="logMax">—</div><div style="font-size:0.75rem;color:rgba(240,244,255,0.5)">الأعلى</div></div>
+      <div style="text-align:center;padding:1rem;background:var(--glass);border-radius:12px;border:1px solid var(--glass-border);"><div style="font-size:1.4rem;font-weight:900;color:var(--light)" id="logCount">—</div><div style="font-size:0.75rem;color:rgba(240,244,255,0.5)">عدد القراءات</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ MEDICATION REMINDERS ═══════════ -->
+<section id="reminders">
+  <div class="section-label">التذكيرات الدوائية</div>
+  <h2 class="section-title">منظم أدويتك اليومية</h2>
+  <p class="section-desc">أضف أدويتك ومواعيدها ولا تنس جرعة واحدة</p>
+  <div class="reminder-wrap reveal">
+    <div class="reminder-form">
+      <div><label style="font-size:0.78rem;color:rgba(240,244,255,0.6);display:block;margin-bottom:0.3rem;">اسم الدواء</label><input type="text" id="medName" placeholder="مثال: ميتفورمين 500 ملغ"></div>
+      <div><label style="font-size:0.78rem;color:rgba(240,244,255,0.6);display:block;margin-bottom:0.3rem;">وقت الجرعة</label><input type="time" id="medTime"></div>
+      <button class="add-reminder-btn" onclick="addReminder()">+ أضف</button>
+    </div>
+    <div class="reminders-list" id="remindersList">
+      <div style="text-align:center;color:rgba(240,244,255,0.35);padding:1.5rem;font-size:0.85rem;">أضف أدويتك هنا للتتبع</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ COMPLICATIONS ═══════════ -->
+<section id="complications">
+  <div class="section-label">عواقب الإهمال</div>
+  <h2 class="section-title">مضاعفات السكري غير المسيطر عليه</h2>
+  <p class="section-desc">السكري غير المتحكم به يُلحق أضراراً خطيرة بأجهزة الجسم المختلفة تدريجياً</p>
+  <div class="complications-visual reveal">
+    <div class="comp-card"><div class="comp-icon">❤️</div><h4>أمراض القلب التاجية</h4><p>2-4 أضعاف خطر الأزمة القلبية. ارتفاع السكر يتلف بطانة الأوعية ويُسرّع تصلب الشرايين.</p><span class="comp-risk risk-high">خطر مرتفع جداً</span></div>
+    <div class="comp-card"><div class="comp-icon">🧠</div><h4>السكتة الدماغية</h4><p>ضعف تروية الدماغ وتجلط الأوعية الدماغية. مرضى السكري أكثر عرضة بنسبة 150%.</p><span class="comp-risk risk-high">خطر مرتفع</span></div>
+    <div class="comp-card"><div class="comp-icon">👁️</div><h4>اعتلال الشبكية</h4><p>السبب الأول للعمى في سن العمل. نمو أوعية دموية هشة في الشبكية تُسرب الدم.</p><span class="comp-risk risk-high">قابل للوقاية</span></div>
+    <div class="comp-card"><div class="comp-icon">🫘</div><h4>الفشل الكلوي</h4><p>السكري السبب الأول للديال الكلوي. يبدأ بتسرب بروتين في البول ويتطور خلال 10-20 سنة.</p><span class="comp-risk risk-high">تدريجي وخطير</span></div>
+    <div class="comp-card"><div class="comp-icon">🦵</div><h4>القدم السكرية والبتر</h4><p>نقص التروية وتلف الأعصاب يُعطل التئام الجروح. السكري مسؤول عن 60% من حالات البتر.</p><span class="comp-risk risk-high">يمكن تجنبه</span></div>
+    <div class="comp-card"><div class="comp-icon">🧬</div><h4>الاعتلال العصبي</h4><p>تلف ألياف الأعصاب المحيطية يسبب ألماً وتنميلاً وفقدان الحساسية في القدمين.</p><span class="comp-risk risk-med">شائع جداً</span></div>
+    <div class="comp-card"><div class="comp-icon">🦷</div><h4>أمراض اللثة</h4><p>السكري يُضعف جهاز المناعة ويقلل التروية للثة مما يزيد التهابات اللثة وفقدان الأسنان.</p><span class="comp-risk risk-med">خطر متوسط</span></div>
+    <div class="comp-card"><div class="comp-icon">🤰</div><h4>مضاعفات الحمل</h4><p>ارتفاع السكر أثناء الحمل يزيد خطر التشوهات والإجهاض وضخامة الجنين ومشاكل الولادة.</p><span class="comp-risk risk-high">خطير للجنين</span></div>
+    <div class="comp-card"><div class="comp-icon">🧪</div><h4>الحماض الكيتوني DKA</h4><p>طارئ طبي حاد في النوع الأول. نقص الأنسولين يُجبر الجسم على حرق الدهون منتجاً حموضة قاتلة.</p><span class="comp-risk risk-high">طارئ طبي</span></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ MYTHS ═══════════ -->
+<section id="myths">
+  <div class="section-label">الحقيقة والخرافة</div>
+  <h2 class="section-title">خرافات شائعة عن السكري — حقيقة أم وهم؟</h2>
+  <p class="section-desc">كثير من المعلومات الخاطئة تنتشر حول السكري — نصحح الأكاذيب بالعلم</p>
+  <div class="myths-grid reveal">
+    <div class="myth-card myth"><div class="myth-label">❌ خرافة</div><h4>السكري يصيب الحلوين فقط</h4><p>السكري لا علاقة له بطيبة الشخصية! النوع الأول مناعي والثاني مرتبط بعوامل متعددة كالجينات والوزن والنشاط.</p></div>
+    <div class="myth-card fact"><div class="myth-label">✅ حقيقة</div><h4>الرياضة تخفض السكر بدون دواء</h4><p>التمارين تُنشّط استهلاك الجلوكوز في العضلات بشكل مستقل عن الأنسولين. 30 دقيقة مشي تخفض السكر فعلاً.</p></div>
+    <div class="myth-card myth"><div class="myth-label">❌ خرافة</div><h4>مريض السكري لا يأكل حلوى أبداً</h4><p>يمكن تناول الحلوى أحياناً بكميات صغيرة ضمن خطة غذائية متوازنة. الحرمان الكامل غير ضروري ويؤثر نفسياً.</p></div>
+    <div class="myth-card fact"><div class="myth-label">✅ حقيقة</div><h4>النوع الثاني يمكن أن يتراجع</h4><p>إنقاص 10-15% من الوزن مع نظام غذائي صارم قد يُحقق مغفرة كاملة للسكري الثاني في مراحله المبكرة.</p></div>
+    <div class="myth-card myth"><div class="myth-label">❌ خرافة</div><h4>الأنسولين إدمان أو ضعف</h4><p>الأنسولين هرمون طبيعي أساسي. لمرضى النوع الأول هو الحياة ذاتها. استخدامه قرار طبي صحيح وليس هزيمة.</p></div>
+    <div class="myth-card fact"><div class="myth-label">✅ حقيقة</div><h4>التوتر يرفع السكر فعلاً</h4><p>الكورتيزول الناتج عن التوتر يُحفّز البنكرياس على إفراز الجلوكاغون الذي يرفع سكر الدم بشكل مباشر.</p></div>
+    <div class="myth-card myth"><div class="myth-label">❌ خرافة</div><h4>السكر الطبيعي يعني السكري اختفى</h4><p>السكري مرض مزمن. السكر الطبيعي نتيجة للدواء والنظام الغذائي — وليس شفاءً. الإهمال يُعيده فوراً.</p></div>
+    <div class="myth-card fact"><div class="myth-label">✅ حقيقة</div><h4>الفحص الدوري ينقذ الأرواح</h4><p>50% من مرضى النوع الثاني لا يعلمون بإصابتهم. الكشف المبكر يمنع المضاعفات ويحافظ على الجودة الحياتية.</p></div>
+    <div class="myth-card myth"><div class="myth-label">❌ خرافة</div><h4>الفاكهة آمنة تماماً لمريض السكري</h4><p>بعض الفاكهة كالعنب والمانجو والبلح عالية السكر وترفع الجلوكوز بسرعة. الكمية والنوع مهمان جداً.</p></div>
+    <div class="myth-card fact"><div class="myth-label">✅ حقيقة</div><h4>مريض السكري يعيش حياة طبيعية</h4><p>مع الالتزام بالعلاج والنظام الغذائي يمكن لمريض السكري أن يُنجز أكثر من غيره — أبطال أولمبيون مصابون بالسكري!</p></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ LIFESTYLE TIPS ═══════════ -->
+<section id="lifestyle-tips">
+  <div class="section-label">نصائح يومية</div>
+  <h2 class="section-title">10 عادات يومية تغير حياتك</h2>
+  <div class="tips-timeline reveal">
+    <div class="tip-item"><div class="tip-num">1</div><div class="tip-body"><h4>قِس سكرك كل صباح قبل الإفطار</h4><p>قراءة الصيام تعكس مستواك الأساسي وتساعد على ضبط الجرعة الدوائية. سجّل القراءة وشارك مع طبيبك شهرياً.</p></div></div>
+    <div class="tip-item"><div class="tip-num">2</div><div class="tip-body"><h4>المشي 10 دقائق بعد كل وجبة</h4><p>المشي بعد الأكل مباشرة يحفز عضلات الساق على امتصاص الجلوكوز بدلاً من تراكمه في الدم — فعّال جداً.</p></div></div>
+    <div class="tip-item"><div class="tip-num">3</div><div class="tip-body"><h4>ابدأ وجبتك بالخضروات والبروتين</h4><p>تناول الخضروات ثم البروتين قبل الكربوهيدرات يقلل ارتفاع سكر ما بعد الوجبة بنسبة تصل إلى 40%.</p></div></div>
+    <div class="tip-item"><div class="tip-num">4</div><div class="tip-body"><h4>اشرب 8 أكواب ماء يومياً</h4><p>الماء الكافي يساعد الكلى على إخراج الجلوكوز الزائد ويمنع الجفاف الذي يرفع تركيز السكر في الدم.</p></div></div>
+    <div class="tip-item"><div class="tip-num">5</div><div class="tip-body"><h4>لا تتخطى الوجبات أبداً</h4><p>تخطي الوجبات يسبب هبوطاً ثم ارتفاعاً حاداً في السكر. 3 وجبات منتظمة مع خفيفتين صحيتين أفضل بكثير.</p></div></div>
+    <div class="tip-item"><div class="tip-num">6</div><div class="tip-body"><h4>افحص قدميك يومياً</h4><p>تفقد القدمين بالمرآة يومياً بحثاً عن جروح أو احمرار أو تقرحات — الكشف المبكر يمنع المضاعفات الخطيرة.</p></div></div>
+    <div class="tip-item"><div class="tip-num">7</div><div class="tip-body"><h4>احمل سكراً سريعاً معك دائماً</h4><p>علبة عصير صغيرة أو حبات جلوكوز في جيبك تنقذك من هبوط السكر الطارئ في أي وقت ومكان.</p></div></div>
+    <div class="tip-item"><div class="tip-num">8</div><div class="tip-body"><h4>نم 7-9 ساعات بانتظام</h4><p>قلة النوم ترفع الكورتيزول وتزيد الشهية للسكريات وتقلل حساسية الأنسولين — النوم الجيد علاج مجاني.</p></div></div>
+    <div class="tip-item"><div class="tip-num">9</div><div class="tip-body"><h4>حافظ على مواعيد أدويتك بدقة</h4><p>استخدام تطبيق تذكير أو منبه لكل جرعة يمنع النسيان ويحافظ على مستوى ثابت من الدواء في الجسم.</p></div></div>
+    <div class="tip-item"><div class="tip-num">10</div><div class="tip-body"><h4>اجلس مع طبيبك كل 3 أشهر</h4><p>المتابعة الدورية تكشف المضاعفات مبكراً وتُعدّل العلاج حسب تطور حالتك — لا تؤجل المواعيد.</p></div></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ PREVENTION ═══════════ -->
+<section id="prevention">
+  <div class="section-label">الوقاية خير من العلاج</div>
+  <h2 class="section-title">كيف تحمي نفسك من السكري؟</h2>
+  <p class="section-desc">80% من حالات النوع الثاني قابلة للوقاية بتغييرات بسيطة في نمط الحياة</p>
+  <div class="prev-grid reveal">
+    <div class="prev-card"><div class="prev-icon">🥗</div><h4>تغذية صحية ومتوازنة</h4><p>ركز على الألياف والبروتين والدهون الصحية — قلل السكريات المضافة والكربوهيدرات المكررة بشكل ملموس</p></div>
+    <div class="prev-card"><div class="prev-icon">🏊</div><h4>النشاط البدني المنتظم</h4><p>30 دقيقة يومياً من الرياضة المعتدلة تحسن حساسية الأنسولين وتقلل خطر السكري بنسبة 58%</p></div>
+    <div class="prev-card"><div class="prev-icon">⚖️</div><h4>الحفاظ على وزن صحي</h4><p>كل 5% تُنقصها من وزنك يُقلل خطر السكري بشكل معتبر — الهدف مؤشر كتلة 18.5-24.9</p></div>
+    <div class="prev-card"><div class="prev-icon">🚭</div><h4>الإقلاع عن التدخين</h4><p>المدخنون أكثر عرضة للإصابة بالسكري بنسبة 30-40% — الإقلاع يُعيد حساسية الأنسولين خلال أسابيع</p></div>
+    <div class="prev-card"><div class="prev-icon">😴</div><h4>نوم كافٍ وجيد النوعية</h4><p>النوم 7-9 ساعات يومياً يُوازن هرمونات الشهية ويُحسّن استجابة الجسم للأنسولين بشكل كبير</p></div>
+    <div class="prev-card"><div class="prev-icon">🔬</div><h4>الفحص الدوري المبكر</h4><p>فحص سكر الدم كل 1-3 سنوات بعد الأربعين أو مع وجود عوامل خطر — الكشف المبكر يغير كل شيء</p></div>
+    <div class="prev-card"><div class="prev-icon">🧘</div><h4>إدارة التوتر والضغط</h4><p>التأمل واليوغا والتنفس العميق تخفض الكورتيزول وتُحسّن حساسية الأنسولين على المدى الطويل</p></div>
+    <div class="prev-card"><div class="prev-icon">☀️</div><h4>فيتامين D الكافي</h4><p>الأبحاث تُشير إلى دور فيتامين D في تحسين وظيفة البنكرياس. عشر دقائق شمس يومياً أو مكملات بإشراف طبي</p></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section id="faq">
+  <div class="section-label">أسئلة وأجوبة</div>
+  <h2 class="section-title" style="text-align:center;">أكثر الأسئلة شيوعاً</h2>
+  <div class="faq-list reveal">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">هل مرض السكري قابل للشفاء التام؟<div class="faq-arrow">▼</div></div><div class="faq-a">النوع الأول لا يمكن شفاؤه حالياً لأنه مرض مناعي ذاتي. أما النوع الثاني فيمكن تحقيق "المغفرة" (Remission) عبر إنقاص الوزن الكبير (10-15%) والالتزام الغذائي الصارم خاصةً في مراحله المبكرة — يعود السكر للطبيعي دون أدوية لكن يحتاج استمرار نمط الحياة الصحي.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">ما الفرق بين هبوط السكر وارتفاعه؟ وكيف أتعامل مع كل منهما؟<div class="faq-arrow">▼</div></div><div class="faq-a">هبوط السكر (أقل من 70 ملغ/دل): تعرق وارتجاف ودوار وجوع شديد. العلاج الفوري: قاعدة 15-15 — 15 غراماً كربوهيدرات سريعة (نصف كوب عصير أو 3 أقراص جلوكوز) ثم إعادة قياس بعد 15 دقيقة. ارتفاع السكر (أكثر من 250): عطش وتبول وإرهاق — يحتاج تعديل دواء وشرب ماء وفحص السبب.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">هل يمكن لمريض السكري تناول الفاكهة؟<div class="faq-arrow">▼</div></div><div class="faq-a">نعم باعتدال وذكاء! الفاكهة ذات المؤشر الجلايسيمي المنخفض مثل التوت والتفاح والكمثرى مناسبة بكميات معقولة. تناولها كاملة لا معصورة للحفاظ على الألياف، ومع وجبة تحتوي بروتيناً لتبطئ امتصاص السكر. الفاكهة عالية السكر كالمانجو والبلح والعنب تحتاج حذراً أكبر.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">هل الأنسولين يسبب الإدمان أو زيادة الوزن؟<div class="faq-arrow">▼</div></div><div class="faq-a">لا إدمان مطلقاً — الأنسولين هرمون طبيعي تحتاجه خلايا جسمك. أما زيادة الوزن فقد تحدث مع بعض أنواع الأنسولين لأنه يُعزز تخزين الطاقة — الحل هو التحكم الدقيق في الكميات الغذائية وممارسة الرياضة لتعويض ذلك.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">متى يجب الذهاب لغرفة الطوارئ؟<div class="faq-arrow">▼</div></div><div class="faq-a">اذهب فوراً للطوارئ في حال: هبوط حاد لم يستجب لعلاج المنزل، سكر فوق 400 مع أعراض، قيء متكرر يمنع تناول الدواء، حماض كيتوني (رائحة أسيتون + سكر مرتفع + تنفس سريع)، فقدان الوعي، أي أعراض غير اعتيادية مقلقة.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">هل الحمل آمن لمريضة السكري؟<div class="faq-arrow">▼</div></div><div class="faq-a">نعم مع التخطيط والمتابعة المكثفة. يُنصح بتحقيق HbA1c أقل من 6.5% قبل الحمل وتناول حمض الفوليك. الحمل مع سكر غير متحكم به يزيد خطر التشوهات الخلقية والإجهاض وضخامة الجنين. المتابعة أسبوعياً مع فريق طبي متخصص ضرورية.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">هل الصيام الرمضاني آمن لمريض السكري؟<div class="faq-arrow">▼</div></div><div class="faq-a">يختلف بحسب الحالة. مرضى النوع الأول وبعض النوع الثاني قد يكون الصيام خطراً عليهم. من يرغب في الصيام يجب أن يستشير طبيبه قبل رمضان بأسابيع لتعديل جرعات الأدوية ووضع خطة مراقبة مكثفة وتجنب الإفراط في الإفطار.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">ما هو الهدف المثالي لسكر الدم؟<div class="faq-arrow">▼</div></div><div class="faq-a">وفق جمعية السكري الأمريكية: سكر الصيام 80-130 ملغ/دل، ما بعد الوجبة أقل من 180 ملغ/دل، وHbA1c أقل من 7% لمعظم البالغين. يختلف الهدف لكبار السن والأطفال والحوامل — ناقش هدفك الشخصي مع طبيبك.</div></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ GLOSSARY ═══════════ -->
+<section id="glossary">
+  <div class="section-label">المصطلحات الطبية</div>
+  <h2 class="section-title">قاموس مصطلحات السكري</h2>
+  <p class="section-desc">دليل سريع لفهم المصطلحات الطبية التي ستسمعها من طبيبك</p>
+  <div class="glossary-grid reveal">
+    <div class="gloss-item"><div class="term">HbA1c — الهيموغلوبين السكري</div><div class="def">نسبة مئوية تعكس متوسط سكر الدم خلال 2-3 أشهر الماضية. الهدف للمريض المتحكم: أقل من 7%.</div></div>
+    <div class="gloss-item"><div class="term">Insulin Resistance — مقاومة الأنسولين</div><div class="def">حالة تفقد فيها خلايا الجسم حساسيتها للأنسولين وتحتاج كميات أكبر للاستجابة للجلوكوز.</div></div>
+    <div class="gloss-item"><div class="term">Hypoglycemia — هبوط السكر</div><div class="def">انخفاض سكر الدم عن 70 ملغ/دل. يسبب تعرقاً وارتجافاً وقد يُفقد الوعي إذا لم يُعالَج فوراً.</div></div>
+    <div class="gloss-item"><div class="term">Hyperglycemia — ارتفاع السكر</div><div class="def">ارتفاع سكر الدم فوق المستوى الطبيعي. المزمن يُلحق ضرراً تدريجياً بالأوعية والأعصاب والأعضاء.</div></div>
+    <div class="gloss-item"><div class="term">DKA — الحماض الكيتوني السكري</div><div class="def">حالة طارئة خطيرة في النوع الأول. نقص الأنسولين يجبر الجسم على تكسير الدهون منتجاً كيتونات حمضية.</div></div>
+    <div class="gloss-item"><div class="term">CGM — مراقبة الجلوكوز المستمرة</div><div class="def">جهاز يُزرع تحت الجلد يقيس مستوى السكر تلقائياً كل بضع دقائق ويرسل النتائج للهاتف الذكي.</div></div>
+    <div class="gloss-item"><div class="term">Insulin Pump — مضخة الأنسولين</div><div class="def">جهاز صغير يُرتدى على الجسم يوصّل جرعات أنسولين مستمرة وإضافية عند الوجبات بدلاً من الحقن.</div></div>
+    <div class="gloss-item"><div class="term">Glycemic Index — المؤشر الجلايسيمي</div><div class="def">مقياس من 0-100 يُحدد سرعة رفع الطعام لسكر الدم مقارنةً بالجلوكوز النقي. الأقل = الأأمن.</div></div>
+    <div class="gloss-item"><div class="term">Beta Cells — خلايا بيتا</div><div class="def">خلايا متخصصة في جزر لانغرهانس بالبنكرياس مسؤولة عن إنتاج وإفراز الأنسولين استجابةً للجلوكوز.</div></div>
+    <div class="gloss-item"><div class="term">Neuropathy — الاعتلال العصبي</div><div class="def">تلف الأعصاب الناتج عن ارتفاع السكر المزمن. يُسبب تنميلاً وألماً وفقدان حساسية خاصةً في القدمين.</div></div>
+    <div class="gloss-item"><div class="term">Retinopathy — اعتلال الشبكية</div><div class="def">تلف الأوعية الدموية الدقيقة في الشبكية. يبدأ بدون أعراض ويتطور لضعف بصر أو عمى بدون علاج.</div></div>
+    <div class="gloss-item"><div class="term">Remission — المغفرة</div><div class="def">حالة يعود فيها سكر الدم للمعدل الطبيعي دون أدوية لفترة ممتدة. ممكنة في النوع الثاني المبكر.</div></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════ RESOURCES ═══════════ -->
+<section id="resources">
+  <div class="section-label">مصادر موثوقة</div>
+  <h2 class="section-title">مصادر علمية موثوقة للمزيد</h2>
+  <div class="resources-grid reveal">
+    <div class="res-card"><div class="res-icon">🏥</div><h4>جمعية السكري الأمريكية (ADA)</h4><p>المرجع العالمي الأول لإرشادات علاج السكري والأبحاث الحديثة والتوجيهات العلمية المحدّثة سنوياً.</p><span class="res-type">📖 دليل علمي</span></div>
+    <div class="res-card"><div class="res-icon">🌍</div><h4>الاتحاد الدولي للسكري (IDF)</h4><p>إحصائيات عالمية محدّثة عن انتشار السكري وإرشادات الوقاية والإدارة في مختلف دول العالم.</p><span class="res-type">🌐 منظمة دولية</span></div>
+    <div class="res-card"><div class="res-icon">🔬</div><h4>منظمة الصحة العالمية (WHO)</h4><p>معلومات شاملة عن السكري كمشكلة صحية عامة وبرامج الوقاية والسياسات الصحية العالمية.</p><span class="res-type">🏛️ منظمة دولية</span></div>
+    <div class="res-card"><div class="res-icon">📱</div><h4>تطبيق MySugr</h4><p>تطبيق متخصص لتتبع السكر والأدوية والطعام وإنتاج تقارير تفصيلية مع ميزات تحفيزية ذكية.</p><span class="res-type">📲 تطبيق ذكي</span></div>
+    <div class="res-card"><div class="res-icon">📚</div><h4>Diabetes Care Journal</h4><p>المجلة العلمية الرائدة في أبحاث السكري — تنشر أحدث الدراسات السريرية والتوجيهات العلاجية.</p><span class="res-type">🔬 مجلة علمية</span></div>
+    <div class="res-card"><div class="res-icon">🤝</div><h4>مجموعات الدعم المجتمعي</h4><p>الانضمام لمجتمعات مرضى السكري يُحسّن الالتزام بالعلاج والصحة النفسية والجودة الحياتية بشكل ملحوظ.</p><span class="res-type">👥 دعم مجتمعي</span></div>
+  </div>
+</section>
+
+<!-- ═══════════ QUIZ ═══════════ -->
+<div class="section-divider"></div>
+<section id="quiz">
+  <div class="section-label">اختبر معلوماتك</div>
+  <h2 class="section-title" style="text-align:center;">كويز السكري التفاعلي</h2>
+  <p class="section-desc" style="text-align:center;margin:0 auto 2.5rem;">10 أسئلة تقيس مستوى معرفتك بمرض السكري — هل أنت مستعد؟</p>
+  <div id="quizWrap" style="max-width:720px;margin:0 auto;">
+    <div id="quizStart" style="text-align:center;background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:3rem;">
+      <div style="font-size:4rem;margin-bottom:1rem;">🧠</div>
+      <h3 style="font-size:1.4rem;margin-bottom:0.8rem;">جاهز للاختبار؟</h3>
+      <p style="color:rgba(240,244,255,0.6);margin-bottom:2rem;line-height:1.8;">10 أسئلة متعددة الاختيار عن مرض السكري — الأسباب والأعراض والعلاج والتغذية. اعرف نفسك!</p>
+      <button class="btn-primary" onclick="startQuiz()">ابدأ الاختبار 🚀</button>
+    </div>
+    <div id="quizGame" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+        <span id="qCounter" style="font-size:0.85rem;color:rgba(240,244,255,0.55);">سؤال 1 من 10</span>
+        <span id="qScore" style="font-size:0.85rem;color:var(--teal);font-weight:700;">النتيجة: 0</span>
+      </div>
+      <div style="height:4px;background:var(--glass-border);border-radius:2px;margin-bottom:2rem;"><div id="qProgress" style="height:100%;background:linear-gradient(90deg,var(--teal),#0080ff);border-radius:2px;transition:width 0.4s;width:10%"></div></div>
+      <div style="background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:2rem;" id="qCard">
+        <p id="qText" style="font-size:1.1rem;font-weight:600;line-height:1.8;margin-bottom:1.5rem;"></p>
+        <div id="qOptions" style="display:flex;flex-direction:column;gap:0.7rem;"></div>
+        <div id="qFeedback" style="display:none;margin-top:1rem;padding:1rem 1.2rem;border-radius:12px;font-size:0.9rem;line-height:1.7;"></div>
+        <button id="qNext" style="display:none;margin-top:1rem;width:100%;" class="btn-primary" onclick="nextQ()">السؤال التالي ←</button>
+      </div>
+    </div>
+    <div id="quizResult" style="display:none;text-align:center;background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:3rem;">
+      <div id="qResultEmoji" style="font-size:4rem;margin-bottom:1rem;"></div>
+      <h3 id="qResultTitle" style="font-size:1.5rem;margin-bottom:0.5rem;"></h3>
+      <div id="qResultScore" style="font-size:3rem;font-weight:900;color:var(--teal);margin:1rem 0;"></div>
+      <p id="qResultMsg" style="color:rgba(240,244,255,0.65);line-height:1.8;margin-bottom:2rem;"></p>
+      <div id="qAnswerReview" style="text-align:right;margin-bottom:2rem;display:flex;flex-direction:column;gap:0.6rem;"></div>
+      <button class="btn-primary" onclick="restartQuiz()">🔄 حاول مجدداً</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TYPE COMPARISON ═══════════ -->
+<div class="section-divider"></div>
+<section id="comparison">
+  <div class="section-label">مقارنة تفصيلية</div>
+  <h2 class="section-title">النوع الأول مقابل الثاني — جنباً لجنب</h2>
+  <p class="section-desc">فهم الفرق الجوهري بين النوعين يُساعد على الإدارة الصحيحة</p>
+  <div class="reveal" style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;overflow:hidden;">
+      <thead>
+        <tr>
+          <th style="padding:1.1rem 1.3rem;text-align:right;font-size:0.85rem;color:rgba(240,244,255,0.5);border-bottom:1px solid var(--glass-border);background:rgba(255,255,255,0.03);">📋 المعيار</th>
+          <th style="padding:1.1rem 1.3rem;text-align:center;font-size:0.95rem;color:#ff8080;border-bottom:1px solid var(--glass-border);background:rgba(232,69,69,0.06);">🧬 النوع الأول</th>
+          <th style="padding:1.1rem 1.3rem;text-align:center;font-size:0.95rem;color:var(--teal);border-bottom:1px solid var(--glass-border);background:rgba(0,201,167,0.06);">⚖️ النوع الثاني</th>
+        </tr>
+      </thead>
+      <tbody id="compareTable"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ MEDICATIONS TABLE ═══════════ -->
+<div class="section-divider"></div>
+<section id="medications">
+  <div class="section-label">دليل الأدوية</div>
+  <h2 class="section-title">جدول الأدوية الشائعة والجرعات</h2>
+  <p class="section-desc">مرجع سريع لأشهر أدوية السكري — للمعلومات فقط، استشر طبيبك دائماً للجرعة المناسبة لك</p>
+  <div class="reveal" style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;overflow:hidden;min-width:700px;">
+      <thead>
+        <tr style="background:rgba(255,255,255,0.04);">
+          <th style="padding:1rem 1.2rem;text-align:right;font-size:0.82rem;color:rgba(240,244,255,0.5);border-bottom:1px solid var(--glass-border);">الدواء</th>
+          <th style="padding:1rem 1.2rem;text-align:center;font-size:0.82rem;color:rgba(240,244,255,0.5);border-bottom:1px solid var(--glass-border);">الفئة</th>
+          <th style="padding:1rem 1.2rem;text-align:center;font-size:0.82rem;color:rgba(240,244,255,0.5);border-bottom:1px solid var(--glass-border);">الجرعة الشائعة</th>
+          <th style="padding:1rem 1.2rem;text-align:center;font-size:0.82rem;color:rgba(240,244,255,0.5);border-bottom:1px solid var(--glass-border);">التوقيت</th>
+          <th style="padding:1rem 1.2rem;text-align:center;font-size:0.82rem;color:rgba(240,244,255,0.5);border-bottom:1px solid var(--glass-border);">ملاحظات</th>
+        </tr>
+      </thead>
+      <tbody id="medsTable"></tbody>
+    </table>
+  </div>
+  <div style="margin-top:1rem;padding:0.8rem 1.2rem;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);border-radius:12px;font-size:0.82rem;color:rgba(240,244,255,0.6);">
+    ⚠️ هذا الجدول للمعلومات العامة فقط. الجرعة تختلف من شخص لآخر — لا تعدّل جرعتك بدون استشارة طبيبك.
+  </div>
+</section>
+
+<!-- ═══════════ GLUCOSE DEVICES ═══════════ -->
+<div class="section-divider"></div>
+<section id="devices">
+  <div class="section-label">مقارنة الأجهزة</div>
+  <h2 class="section-title">مقارنة أجهزة قياس السكر</h2>
+  <p class="section-desc">دليل شامل لمساعدتك في اختيار الجهاز الأنسب لحالتك واحتياجاتك</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;" class="reveal" id="devicesGrid"></div>
+</section>
+
+<!-- ═══════════ INSULIN DOSE CALCULATOR ═══════════ -->
+<div class="section-divider"></div>
+<section id="insulin-calc">
+  <div class="section-label">حاسبة متخصصة</div>
+  <h2 class="section-title">حاسبة جرعة الأنسولين التقديرية</h2>
+  <p class="section-desc">تساعدك على فهم حساب الجرعة — للتثقيف فقط، الجرعة الفعلية تحددها مع طبيبك</p>
+  <div style="max-width:640px;margin:0 auto;background:var(--glass);border:1px solid var(--glass-border);border-radius:26px;padding:2.5rem;" class="reveal">
+    <h3 style="text-align:center;margin-bottom:0.5rem;">💉 حاسبة الأنسولين التقديرية</h3>
+    <p style="text-align:center;font-size:0.82rem;color:rgba(240,244,255,0.5);margin-bottom:2rem;">تستخدم قاعدة 1800 للأنسولين السريع و500 للجرعة الغذائية</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div class="calc-row"><label>سكرك الحالي (ملغ/دل)</label><input type="number" id="iCurrent" placeholder="مثال: 220"></div>
+      <div class="calc-row"><label>السكر المستهدف (ملغ/دل)</label><input type="number" id="iTarget" placeholder="مثال: 110"></div>
+      <div class="calc-row"><label>جرعتك اليومية الكلية (وحدة)</label><input type="number" id="iTDD" placeholder="مثال: 40"></div>
+      <div class="calc-row"><label>الكربوهيدرات في الوجبة (غرام)</label><input type="number" id="iCarbs" placeholder="مثال: 60"></div>
+    </div>
+    <button class="calc-btn" onclick="calcInsulin()">احسب الجرعة التقديرية</button>
+    <div id="insulinResult" style="display:none;margin-top:1.5rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;text-align:center;">
+        <div style="padding:1rem;background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.2);border-radius:14px;">
+          <div style="font-size:0.75rem;color:rgba(240,244,255,0.5);margin-bottom:0.4rem;">جرعة التصحيح</div>
+          <div id="iCorr" style="font-size:2rem;font-weight:900;color:var(--teal);">0</div>
+          <div style="font-size:0.7rem;color:rgba(240,244,255,0.4);">وحدة</div>
+        </div>
+        <div style="padding:1rem;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);border-radius:14px;">
+          <div style="font-size:0.75rem;color:rgba(240,244,255,0.5);margin-bottom:0.4rem;">جرعة الوجبة</div>
+          <div id="iMeal" style="font-size:2rem;font-weight:900;color:#a78bfa;">0</div>
+          <div style="font-size:0.7rem;color:rgba(240,244,255,0.4);">وحدة</div>
+        </div>
+        <div style="padding:1rem;background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.2);border-radius:14px;">
+          <div style="font-size:0.75rem;color:rgba(240,244,255,0.5);margin-bottom:0.4rem;">الإجمالي</div>
+          <div id="iTotal" style="font-size:2rem;font-weight:900;color:var(--gold);">0</div>
+          <div style="font-size:0.7rem;color:rgba(240,244,255,0.4);">وحدة</div>
+        </div>
+      </div>
+      <div id="insulinNote" style="margin-top:1rem;padding:0.9rem 1.1rem;background:rgba(232,69,69,0.08);border:1px solid rgba(232,69,69,0.2);border-radius:12px;font-size:0.82rem;color:rgba(240,244,255,0.65);line-height:1.7;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GLUCOSE TIMER ═══════════ -->
+<div class="section-divider"></div>
+<section id="timer">
+  <div class="section-label">مؤقت ذكي</div>
+  <h2 class="section-title" style="text-align:center;">مؤقت قياس السكر الذكي</h2>
+  <p class="section-desc" style="text-align:center;margin:0 auto 2.5rem;">يذكّرك بأفضل أوقات قياس سكرك خلال اليوم مع تنبيهات تلقائية</p>
+  <div style="max-width:600px;margin:0 auto;" class="reveal">
+    <div style="background:var(--glass);border:1px solid var(--glass-border);border-radius:26px;padding:2.5rem;text-align:center;">
+      <div id="timerClock" style="font-size:4.5rem;font-weight:900;color:var(--teal);font-variant-numeric:tabular-nums;letter-spacing:4px;margin-bottom:0.5rem;">00:00</div>
+      <div id="timerLabel" style="font-size:1rem;color:rgba(240,244,255,0.6);margin-bottom:2rem;">اختر نوع المؤقت</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.8rem;margin-bottom:2rem;" id="timerPresets"></div>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button onclick="startTimer()" id="timerStartBtn" style="padding:0.8rem 2rem;background:linear-gradient(135deg,var(--teal),#0080ff);border:none;border-radius:12px;color:var(--deep);font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:0.95rem;">▶ ابدأ</button>
+        <button onclick="pauseTimer()" style="padding:0.8rem 2rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:12px;color:var(--light);font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:0.95rem;">⏸ إيقاف</button>
+        <button onclick="resetTimer()" style="padding:0.8rem 2rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:12px;color:var(--light);font-family:'Cairo',sans-serif;font-weight:700;cursor:pointer;font-size:0.95rem;">🔄 إعادة</button>
+      </div>
+      <div id="timerRing" style="width:180px;height:180px;margin:2rem auto 0;position:relative;">
+        <svg viewBox="0 0 180 180" style="width:100%;transform:rotate(-90deg);">
+          <circle cx="90" cy="90" r="80" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10"/>
+          <circle id="timerArc" cx="90" cy="90" r="80" fill="none" stroke="url(#tGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="502" stroke-dashoffset="502" style="transition:stroke-dashoffset 1s linear;"/>
+          <defs><linearGradient id="tGrad" x1="0%" y1="0%" x2="100%"><stop offset="0%" style="stop-color:#00c9a7"/><stop offset="100%" style="stop-color:#0080ff"/></linearGradient></defs>
+        </svg>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+          <div id="timerPct" style="font-size:1.8rem;font-weight:900;color:var(--teal);">0%</div>
+        </div>
+      </div>
+      <div id="timerSchedule" style="margin-top:2rem;text-align:right;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WORLD MAP ═══════════ -->
+<div class="section-divider"></div>
+<section id="worldmap">
+  <div class="section-label">الانتشار العالمي</div>
+  <h2 class="section-title">خريطة انتشار السكري في العالم</h2>
+  <p class="section-desc">نسب الإصابة بالسكري حسب المناطق الجغرافية والدول — بيانات IDF 2023</p>
+  <div class="reveal">
+    <div style="background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:2rem;overflow:hidden;">
+      <canvas id="mapCanvas" style="width:100%;height:380px;display:block;"></canvas>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem;" id="mapRegions"></div>
+      <div style="display:flex;align-items:center;gap:1.5rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center;">
+        <div style="font-size:0.8rem;color:rgba(240,244,255,0.5);">نسبة الانتشار:</div>
+        <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;"><div style="width:14px;height:14px;border-radius:3px;background:#00c9a7"></div>أقل من 5%</div>
+        <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;"><div style="width:14px;height:14px;border-radius:3px;background:#f5a623"></div>5% – 10%</div>
+        <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;"><div style="width:14px;height:14px;border-radius:3px;background:#e84545"></div>أكثر من 10%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HEALTH REPORT ═══════════ -->
+<div class="section-divider"></div>
+<section id="report">
+  <div class="section-label">تقريرك الشخصي</div>
+  <h2 class="section-title" style="text-align:center;">مولّد التقرير الصحي الشخصي</h2>
+  <p class="section-desc" style="text-align:center;margin:0 auto 2.5rem;">أدخل بياناتك واحصل على تقرير صحي شامل يمكن طباعته ومشاركته مع طبيبك</p>
+  <div style="max-width:700px;margin:0 auto;background:var(--glass);border:1px solid var(--glass-border);border-radius:26px;padding:2.5rem;" class="reveal">
+    <h3 style="margin-bottom:2rem;font-size:1.1rem;">📋 أدخل بياناتك الصحية</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div class="calc-row"><label>الاسم</label><input type="text" id="rpName" placeholder="اسمك"></div>
+      <div class="calc-row"><label>العمر</label><input type="number" id="rpAge" placeholder="سنة"></div>
+      <div class="calc-row"><label>الوزن (كغ)</label><input type="number" id="rpWeight" placeholder="كغ"></div>
+      <div class="calc-row"><label>الطول (سم)</label><input type="number" id="rpHeight" placeholder="سم"></div>
+      <div class="calc-row"><label>سكر الصيام الأخير (ملغ/دل)</label><input type="number" id="rpFBS" placeholder="ملغ/دل"></div>
+      <div class="calc-row"><label>HbA1c الأخيرة (%)</label><input type="number" id="rpHba1c" step="0.1" placeholder="%"></div>
+      <div class="calc-row"><label>ضغط الدم الانقباضي</label><input type="number" id="rpBP" placeholder="مثال: 120"></div>
+      <div class="calc-row"><label>نوع السكري</label>
+        <select id="rpType"><option value="">اختر</option><option>النوع الأول</option><option>النوع الثاني</option><option>سكري الحمل</option><option>ما قبل السكري</option></select>
+      </div>
+    </div>
+    <div class="calc-row" style="margin-top:0.5rem;"><label>الأدوية الحالية (اختياري)</label><input type="text" id="rpMeds" placeholder="مثال: ميتفورمين 500، أنسولين جلارجين"></div>
+    <button class="calc-btn" style="margin-top:1rem;" onclick="generateReport()">📄 إنشاء التقرير الصحي</button>
+  </div>
+  <!-- REPORT OUTPUT -->
+  <div id="reportOutput" style="display:none;max-width:700px;margin:2rem auto 0;"></div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">🩺 دليل السكري الذهبي</div>
+      <p>دليلك العلمي الشامل لفهم مرض السكري والتعايش معه بصحة وجودة حياة عالية — مبني على أحدث المراجع الطبية العالمية.</p>
+    </div>
+    <div class="footer-col">
+      <h5>الأقسام الرئيسية</h5>
+      <ul>
+        <li><a href="#what">ما هو السكري</a></li>
+        <li><a href="#types">أنواع المرض</a></li>
+        <li><a href="#symptoms">الأعراض</a></li>
+        <li><a href="#diagnosis">التشخيص</a></li>
+        <li><a href="#treatment">العلاج</a></li>
+        <li><a href="#nutrition">التغذية</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>الأدوات والموارد</h5>
+      <ul>
+        <li><a href="#calculator">حاسبة السكر</a></li>
+        <li><a href="#log">سجل القراءات</a></li>
+        <li><a href="#reminders">التذكيرات</a></li>
+        <li><a href="#myths">خرافات وحقائق</a></li>
+        <li><a href="#glossary">قاموس المصطلحات</a></li>
+        <li><a href="#resources">مصادر علمية</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 دليل السكري الذهبي — للتثقيف الصحي فقط</p>
+    <p>بُني بالعلم والرعاية 💙</p>
+  </div>
+  <div class="disclaimer-box">
+    ⚠️ <strong>تنبيه طبي هام:</strong> هذا المحتوى للتثقيف الصحي العام فقط ولا يُغني بأي حال عن استشارة الطبيب المختص. لا تغيّر جرعة أدويتك أو نظامك الغذائي دون استشارة طبيبك. دائماً راجع طبيبك للتشخيص الدقيق ووضع خطة علاجية مناسبة لحالتك الخاصة.
+  </div>
+</footer>
+
+<style>
+@keyframes growBar{from{height:0}to{}}
+</style>
+
+<script>
+// ── PARTICLES ──
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);
+class Particle{
+  constructor(){this.reset();}
+  reset(){
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.size=Math.random()*2+0.5;
+    this.speed=Math.random()*0.3+0.1;
+    this.opacity=Math.random()*0.4+0.1;
+    this.color=Math.random()>0.5?'0,201,167':'26,58,110';
+  }
+  update(){this.y-=this.speed;this.x+=Math.sin(this.y*0.01)*0.3;if(this.y<-10)this.reset();}
+  draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=`rgba(${this.color},${this.opacity})`;ctx.fill();}
+}
+for(let i=0;i<80;i++) particles.push(new Particle());
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{p.update();p.draw();});
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ── PROGRESS BAR ──
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('progress-bar').style.width=pct+'%';
+  const bt=document.getElementById('back-top');
+  window.scrollY>400?bt.classList.add('visible'):bt.classList.remove('visible');
+  const nav=document.getElementById('mainNav');
+  window.scrollY>50?nav.classList.add('scrolled'):nav.classList.remove('scrolled');
+});
+
+// ── MOBILE NAV ──
+function toggleMobileNav(){document.getElementById('mobileNav').classList.toggle('open');}
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');}
+
+// ── TOAST ──
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ── TREATMENT TABS ──
+function showTab(id,btn){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── FAQ ──
+function toggleFaq(el){
+  const item=el.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+// ── CALC PANELS ──
+function showCalcPanel(id,btn){
+  document.querySelectorAll('.calc-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.calc-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id+'Panel').classList.add('active');
+  btn.classList.add('active');
+  ['calcResult','bmiResult','hba1cResult','riskResult'].forEach(r=>{const el=document.getElementById(r);if(el)el.style.display='none';});
+}
+
+// ── GLUCOSE CALC ──
+function updateLabel(){
+  const t=document.getElementById('measureType').value;
+  const l=document.getElementById('glucoseLabel');
+  l.textContent='مستوى السكر (ملغ/دل)';
+  document.getElementById('calcResult').style.display='none';
+}
+function calcGlucose(){
+  const type=document.getElementById('measureType').value;
+  const val=parseFloat(document.getElementById('glucoseVal').value);
+  if(!val||val<20){showToast('أدخل قيمة صحيحة');return;}
+  const res=document.getElementById('calcResult');
+  res.className='calc-result';res.style.display='block';
+  let status='',msg='',cls='';
+  if(type==='fasting'){
+    if(val<70){status='⚠️ هبوط السكر';cls='prediabetes';msg=`${val} ملغ/دل — هبوط! تناول 15 غرام سكر سريع فوراً وأعد القياس بعد 15 دقيقة.`;}
+    else if(val<100){status='✅ طبيعي ممتاز';cls='normal';msg=`${val} ملغ/دل — مستوى مثالي. استمر على نمط حياتك الصحي.`;}
+    else if(val<=125){status='⚠️ ما قبل السكري';cls='prediabetes';msg=`${val} ملغ/دل — مرحلة تحذيرية. تغيير نمط الحياة الآن يمنع التطور للسكري.`;}
+    else{status='🔴 مرتفع — يستدعي تقييماً';cls='diabetes';msg=`${val} ملغ/دل — يُشير لاحتمال السكري. راجع طبيبك لتأكيد التشخيص والعلاج.`;}
+  } else if(type==='random'){
+    if(val<140){status='✅ طبيعي';cls='normal';msg=`${val} ملغ/دل — مستوى جيد في أي وقت.`;}
+    else if(val<=199){status='⚠️ مرتفع نسبياً';cls='prediabetes';msg=`${val} ملغ/دل — قد يشير لمقاومة الأنسولين. استشر طبيبك لإجراء فحص صيام.`;}
+    else{status='🔴 مرتفع جداً';cls='diabetes';msg=`${val} ملغ/دل — مع أعراض السكري قد يؤكد التشخيص. راجع الطبيب عاجلاً.`;}
+  } else {
+    if(val<140){status='✅ ممتاز بعد الوجبة';cls='normal';msg=`${val} ملغ/دل — استجابة جيدة. وجبتك كانت متوازنة.`;}
+    else if(val<=199){status='⚠️ مرتفع بعد الأكل';cls='prediabetes';msg=`${val} ملغ/دل — راجع نوع الكربوهيدرات في وجبتك. المشي بعد الأكل يساعد.`;}
+    else{status='🔴 مرتفع جداً بعد الوجبة';cls='diabetes';msg=`${val} ملغ/دل — ارتفاع شديد. تحدث لطبيبك عن تعديل الخطة العلاجية.`;}
+  }
+  res.classList.add(cls);
+  document.getElementById('resultVal').textContent=status;
+  document.getElementById('resultMsg').textContent=msg;
+}
+
+// ── BMI CALC ──
+function calcBMI(){
+  const h=parseFloat(document.getElementById('height').value)/100;
+  const w=parseFloat(document.getElementById('weight').value);
+  if(!h||!w){showToast('أدخل الطول والوزن');return;}
+  const bmi=(w/(h*h)).toFixed(1);
+  const res=document.getElementById('bmiResult');
+  res.className='calc-result';res.style.display='block';
+  let status='',msg='',cls='',pct=0;
+  if(bmi<18.5){status=`نحيف — BMI: ${bmi}`;cls='prediabetes';msg='وزنك منخفض. ننصح بزيادة الوزن تدريجياً بنظام غذائي صحي.';pct=10;}
+  else if(bmi<=24.9){status=`✅ طبيعي — BMI: ${bmi}`;cls='normal';msg='وزنك مثالي! هذا يقلل خطر السكري بشكل كبير. حافظ على هذا المستوى.';pct=35;}
+  else if(bmi<=29.9){status=`⚠️ زيادة وزن — BMI: ${bmi}`;cls='prediabetes';msg='وزنك فوق الطبيعي. كل 5% تُنقصها من وزنك يُقلل خطر السكري بشكل معتبر.';pct=62;}
+  else{status=`🔴 بدانة — BMI: ${bmi}`;cls='diabetes';msg='خطر مرتفع جداً للسكري. ننصح بشدة بتغيير نمط الحياة واستشارة طبيب أو أخصائي تغذية.';pct=85;}
+  res.classList.add(cls);
+  document.getElementById('bmiVal').textContent=status;
+  document.getElementById('bmiMsg').textContent=msg;
+  document.getElementById('bmiArrow').style.left=pct+'%';
+}
+
+// ── HBA1C CALC ──
+function calcHbA1c(){
+  const val=parseFloat(document.getElementById('hba1cVal').value);
+  if(!val){showToast('أدخل نسبة HbA1c');return;}
+  const estAvg=Math.round((val*28.7)-46.7);
+  const res=document.getElementById('hba1cResult');
+  res.className='calc-result';res.style.display='block';
+  let status='',msg='',cls='';
+  if(val<5.7){status='✅ طبيعي';cls='normal';msg=`HbA1c: ${val}% | متوسط سكر الدم المقدّر: ~${estAvg} ملغ/دل. ممتاز — استمر على نمط حياتك الصحي.`;}
+  else if(val<=6.4){status='⚠️ ما قبل السكري';cls='prediabetes';msg=`HbA1c: ${val}% | متوسط مقدّر: ~${estAvg} ملغ/دل. تدخل الآن بالنظام والرياضة يمنع التطور لسكري.`;}
+  else if(val<8){status='🟡 سكري — تحكم جيد';cls='prediabetes';msg=`HbA1c: ${val}% | متوسط مقدّر: ~${estAvg} ملغ/دل. قريب من الهدف (أقل من 7%). واصل الجهود.`;}
+  else{status='🔴 سكري — يحتاج تعديل';cls='diabetes';msg=`HbA1c: ${val}% | متوسط مقدّر: ~${estAvg} ملغ/دل. مرتفع. راجع طبيبك لمراجعة خطتك العلاجية.`;}
+  res.classList.add(cls);
+  document.getElementById('hba1cRes').textContent=status;
+  document.getElementById('hba1cMsg').textContent=msg;
+}
+
+// ── RISK CALC ──
+function calcRisk(){
+  let score=0;
+  for(let i=1;i<=8;i++) if(document.getElementById('r'+i).checked) score++;
+  const res=document.getElementById('riskResult');
+  res.className='calc-result';res.style.display='block';
+  let status='',msg='',cls='';
+  if(score<=1){status='✅ خطر منخفض';cls='normal';msg=`${score} عامل خطر. حافظ على نمط حياتك الصحي وتابع الفحوصات الدورية كل 3 سنوات.`;}
+  else if(score<=3){status='⚠️ خطر متوسط';cls='prediabetes';msg=`${score} عوامل خطر. نصحك بإجراء فحص سكر الدم والبدء بتحسين نمط حياتك فوراً.`;}
+  else if(score<=5){status='🟠 خطر مرتفع';cls='prediabetes';msg=`${score} عوامل خطر. يُنصح بزيارة الطبيب لفحص شامل والبدء ببرنامج وقاية من السكري فوراً.`;}
+  else{status='🔴 خطر مرتفع جداً';cls='diabetes';msg=`${score} عوامل خطر. راجع طبيبك في أقرب وقت لإجراء الفحوصات اللازمة ووضع خطة تدخل علاجية.`;}
+  res.classList.add(cls);
+  document.getElementById('riskRes').textContent=status;
+  document.getElementById('riskMsg').textContent=msg;
+}
+
+// ── BLOOD SUGAR LOG ──
+let logEntries=[];
+document.getElementById('logDate').value=new Date().toISOString().slice(0,16);
+function addLogEntry(){
+  const date=document.getElementById('logDate').value;
+  const type=document.getElementById('logType').value;
+  const val=parseFloat(document.getElementById('logValue').value);
+  if(!val||val<20){showToast('أدخل قيمة صحيحة');return;}
+  logEntries.unshift({date,type,val,id:Date.now()});
+  renderLog();
+  document.getElementById('logValue').value='';
+  showToast('✅ تمت إضافة القراءة');
+}
+function getStatus(val){
+  if(val<70)return{label:'هبوط',cls:'status-badge status-low'};
+  if(val<=140)return{label:'طبيعي',cls:'status-badge status-normal'};
+  return{label:'مرتفع',cls:'status-badge status-high'};
+}
+function delLog(id){logEntries=logEntries.filter(e=>e.id!==id);renderLog();}
+function renderLog(){
+  const tb=document.getElementById('logTableBody');
+  if(logEntries.length===0){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(240,244,255,0.35);padding:2rem;font-size:0.85rem;">لا توجد قراءات بعد</td></tr>';document.getElementById('logStats').style.display='none';return;}
+  tb.innerHTML=logEntries.map(e=>{
+    const s=getStatus(e.val);
+    const d=new Date(e.date);
+    return `<tr><td>${d.toLocaleDateString('ar-EG')} ${d.toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'})}</td><td>${e.type}</td><td style="font-weight:700">${e.val} ملغ/دل</td><td><span class="${s.cls}">${s.label}</span></td><td><button onclick="delLog(${e.id})" class="rem-del">🗑</button></td></tr>`;
+  }).join('');
+  const vals=logEntries.map(e=>e.val);
+  const avg=Math.round(vals.reduce((a,b)=>a+b,0)/vals.length);
+  document.getElementById('logAvg').textContent=avg+' ملغ/دل';
+  document.getElementById('logMin').textContent=Math.min(...vals)+' ملغ/دل';
+  document.getElementById('logMax').textContent=Math.max(...vals)+' ملغ/دل';
+  document.getElementById('logCount').textContent=logEntries.length;
+  document.getElementById('logStats').style.display='grid';
+}
+
+// ── MEDICATION REMINDERS ──
+let reminders=[];
+function addReminder(){
+  const name=document.getElementById('medName').value.trim();
+  const time=document.getElementById('medTime').value;
+  if(!name||!time){showToast('أدخل اسم الدواء والوقت');return;}
+  reminders.push({name,time,id:Date.now()});
+  reminders.sort((a,b)=>a.time.localeCompare(b.time));
+  renderReminders();
+  document.getElementById('medName').value='';document.getElementById('medTime').value='';
+  showToast('⏰ تمت إضافة التذكير');
+}
+function delReminder(id){reminders=reminders.filter(r=>r.id!==id);renderReminders();}
+function renderReminders(){
+  const list=document.getElementById('remindersList');
+  if(reminders.length===0){list.innerHTML='<div style="text-align:center;color:rgba(240,244,255,0.35);padding:1.5rem;font-size:0.85rem;">أضف أدويتك هنا للتتبع</div>';return;}
+  list.innerHTML=reminders.map(r=>`
+    <div class="reminder-item">
+      <div class="rem-time">${r.time}</div>
+      <div class="rem-name">💊 ${r.name}</div>
+      <button class="rem-del" onclick="delReminder(${r.id})">🗑</button>
+    </div>`).join('');
+}
+
+// ── MEAL PLANNER ──
+const meals=[
+  [{t:'الإفطار',n:'شوفان بالتوت والمكسرات',d:'شوفان كامل + توت طازج + لوز',c:'320'},{t:'الغداء',n:'سالمون مشوي مع الخضار',d:'فيليه سالمون + بروكلي + بطاطا حلوة صغيرة',c:'480'},{t:'العشاء',n:'شوربة عدس وسلطة',d:'عدس أحمر + خضار متنوعة + زيت زيتون',c:'280'},{t:'خفيف',n:'تفاحة مع الزبدة الطبيعية',d:'تفاحة متوسطة + ملعقة زبدة لوز',c:'150'}],
+  [{t:'الإفطار',n:'بيض مسلوق مع خبز أسمر',d:'بيضتان + شريحتا خبز حبوب كاملة + طماطم',c:'290'},{t:'الغداء',n:'صدر دجاج مشوي مع الأرز البني',d:'دجاج + أرز بني + سلطة خضراء',c:'450'},{t:'العشاء',n:'فاصوليا خضراء مع تونة',d:'فاصوليا + تونة بالزيت + زيتون',c:'260'},{t:'خفيف',n:'زبادي يوناني بدون سكر',d:'زبادي + قليل من الجوز',c:'130'}],
+  [{t:'الإفطار',n:'سموثي خضار وبروتين',d:'سبانخ + موز نصف + بروتين + ماء',c:'250'},{t:'الغداء',n:'سلطة حمص كبيرة',d:'حمص + طماطم + خيار + زيتون + خل',c:'380'},{t:'العشاء',n:'أسماك مع الكينوا',d:'سمك أبيض مشوي + كينوا + ليمون',c:'380'},{t:'خفيف',n:'جزر مع الحمص',d:'جزر مقطع + 2 ملعقة حمص',c:'100'}],
+  [{t:'الإفطار',n:'فول مدمس بزيت الزيتون',d:'فول + طماطم + ليمون + زيت زيتون + خبز أسمر',c:'310'},{t:'الغداء',n:'شوربة خضار بالدجاج',d:'دجاج + جزر + كرفس + بصل + توابل',c:'320'},{t:'العشاء',n:'سلطة كينوا وخضروات',d:'كينوا + خضار متنوعة + جبن قليل الدسم',c:'350'},{t:'خفيف',n:'حفنة مكسرات نيئة',d:'لوز + جوز + فستق (30 غرام)',c:'170'}],
+  [{t:'الإفطار',n:'عجة الخضار',d:'3 بيض + فلفل + بصل + سبانخ + زيت الزيتون',c:'280'},{t:'الغداء',n:'عدس بالليمون',d:'عدس أخضر + ليمون + كمون + سلطة',c:'360'},{t:'العشاء',n:'دجاج تيكا مع الخضار',d:'دجاج متبّل + فلفل + بصل مشوي',c:'420'},{t:'خفيف',n:'فراولة طازجة',d:'كوب فراولة طازجة',c:'50'}],
+  [{t:'الإفطار',n:'خبز الحبوب مع الأفوكادو',d:'شريحة خبز + نصف أفوكادو + بيضة',c:'300'},{t:'الغداء',n:'قريدس مشوي مع سلطة',d:'قريدس + خس + طماطم + زيت زيتون',c:'320'},{t:'العشاء',n:'حساء الخضار الغني',d:'بطاطا حلوة + جزر + كوسة + مرق',c:'250'},{t:'خفيف',n:'زبادي مع بذور الشيا',d:'زبادي + ملعقة بذور شيا + قليل عسل',c:'140'}],
+  [{t:'الإفطار',n:'شوفان المساء (Overnight Oats)',d:'شوفان + حليب لوز + فاكهة مجففة قليلة',c:'330'},{t:'الغداء',n:'سمك مكرونة قمح كامل',d:'تونة + مكرونة كاملة + طماطم + ريحان',c:'460'},{t:'العشاء',n:'لحم بقر قليل الدهن مشوي',d:'شريحة صغيرة + خضار مشوية + ليمون',c:'400'},{t:'خفيف',n:'تفاح وزبدة اللوز',d:'تفاحة + ملعقة زبدة لوز طبيعية',c:'160'}]
+];
+function showMeal(day,btn){
+  document.querySelectorAll('.day-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const mc=document.getElementById('mealCards');
+  mc.innerHTML=meals[day].map(m=>`
+    <div class="meal-card">
+      <div class="meal-time">${m.t}</div>
+      <h5>${m.n}</h5>
+      <p>${m.d}</p>
+      <span class="cal-badge">🔥 ${m.c} سعرة</span>
+    </div>`).join('');
+}
+showMeal(0,document.querySelector('.day-btn'));
+
+// ── EXERCISE ──
+const exercises=[
+  {icon:'🚶',name:'المشي السريع',desc:'تمرين مثالي للمبتدئين، سهل وآمن',cal:280,gluc:25,ins:15,rating:'⭐⭐⭐⭐⭐'},
+  {icon:'🏊',name:'السباحة',desc:'يُشغّل كل العضلات بضغط أقل على المفاصل',cal:400,gluc:35,ins:20,rating:'⭐⭐⭐⭐⭐'},
+  {icon:'🚴',name:'ركوب الدراجة',desc:'مثالي لتحسين صحة القلب والأوعية',cal:450,gluc:30,ins:25,rating:'⭐⭐⭐⭐⭐'},
+  {icon:'🏋️',name:'رفع الأثقال',desc:'يبني عضلات تستهلك الجلوكوز باستمرار',cal:350,gluc:20,ins:30,rating:'⭐⭐⭐⭐'},
+  {icon:'🧘',name:'اليوغا والتأمل',desc:'تقلل التوتر وتحسن حساسية الأنسولين',cal:200,gluc:15,ins:18,rating:'⭐⭐⭐⭐'},
+  {icon:'🏃',name:'الجري الخفيف',desc:'يُحسّن اللياقة القلبية ويحرق الجلوكوز',cal:550,gluc:40,ins:25,rating:'⭐⭐⭐⭐'},
+];
+const grid=document.getElementById('exerciseGrid');
+grid.innerHTML=exercises.map((e,i)=>`
+  <div class="exercise-card" onclick="selectEx(${i},this)">
+    <div class="ex-icon">${e.icon}</div>
+    <h5>${e.name}</h5>
+    <p>${e.desc}</p>
+    <div class="ex-cal">🔥 ${e.cal} سعرة/ساعة</div>
+  </div>`).join('');
+function selectEx(i,el){
+  document.querySelectorAll('.exercise-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  const e=exercises[i];
+  const sum=document.getElementById('exerciseSummary');
+  sum.style.display='flex';
+  document.getElementById('exCalBurn').textContent=e.cal;
+  document.getElementById('exGlucDrop').textContent=e.gluc;
+  document.getElementById('exInsulin').textContent='+'+e.ins+'%';
+  document.getElementById('exRating').textContent=e.rating;
+}
+
+// ══════════════════════════════════════════
+// ── QUIZ ──
+// ══════════════════════════════════════════
+const quizData=[
+  {q:'ما هو الهرمون الذي يُنظّم مستوى السكر في الدم؟',opts:['الكورتيزول','الأنسولين','الأدرينالين','الثيروكسين'],ans:1,exp:'الأنسولين هرمون تُفرزه خلايا بيتا في البنكرياس وهو المسؤول الرئيسي عن تنظيم سكر الدم بالسماح للخلايا بامتصاصه.'},
+  {q:'ما هو النوع الأكثر شيوعاً من مرض السكري؟',opts:['النوع الأول','النوع الثاني','سكري الحمل','MODY'],ans:1,exp:'النوع الثاني يمثل حوالي 90% من جميع حالات السكري، وهو مرتبط بنمط الحياة والسمنة.'},
+  {q:'ما هي قيمة سكر الصيام التي تُشير إلى مرض السكري؟',opts:['أكثر من 100 ملغ/دل','أكثر من 126 ملغ/دل','أكثر من 140 ملغ/دل','أكثر من 200 ملغ/دل'],ans:1,exp:'وفق معايير ADA، قراءة سكر الصيام 126 ملغ/دل أو أكثر في قياسين منفصلين تؤكد تشخيص مرض السكري.'},
+  {q:'ما معنى مصطلح HbA1c؟',opts:['سكر الصيام','الهيموغلوبين السكري — متوسط 3 أشهر','ضغط الدم الانقباضي','نسبة الكوليسترول'],ans:1,exp:'HbA1c أو الهيموغلوبين السكري يعكس متوسط مستوى سكر الدم على مدار 2-3 أشهر الماضية. الهدف لمريض السكري أقل من 7%.'},
+  {q:'أي من هذه الأعراض ليس من أعراض ارتفاع السكر؟',opts:['كثرة التبول','العطش الشديد','برودة الأطراف المفاجئة','الإرهاق الشديد'],ans:2,exp:'برودة الأطراف المفاجئة عرَض للدورة الدموية الضعيفة لكنها ليست عرَضاً مباشراً لارتفاع السكر. الأعراض المباشرة هي كثرة التبول والعطش والإرهاق.'},
+  {q:'ما هو الغذاء الأنسب لمريض السكري في الإفطار؟',opts:['عصير برتقال وخبز أبيض','شوفان كامل مع توت ومكسرات','كورن فليكس بالحليب المحلى','كيك الشوفان بالعسل'],ans:1,exp:'الشوفان الكامل له مؤشر جلايسيمي منخفض والتوت غني بمضادات الأكسدة والمكسرات تُبطئ امتصاص السكر — مجتمعةً هي الخيار الأمثل.'},
+  {q:'ما هي قيمة HbA1c التي تشير لما قبل السكري؟',opts:['أقل من 5%','5.7% – 6.4%','6.5% – 7%','أكثر من 7%'],ans:1,exp:'نسبة HbA1c بين 5.7% و6.4% تُشير لمرحلة ما قبل السكري — مرحلة تحذيرية يمكن فيها الوقاية من التطور لمرض السكري بتغيير نمط الحياة.'},
+  {q:'أي من هذه العوامل يزيد خطر الإصابة بالنوع الثاني من السكري؟',opts:['ممارسة الرياضة يومياً','السمنة وزيادة الوزن','كثرة شرب الماء','النوم 8 ساعات'],ans:1,exp:'السمنة خاصةً دهون منطقة البطن تُعدّ من أقوى عوامل الخطر للإصابة بالنوع الثاني من السكري بسبب تأثيرها على مقاومة الأنسولين.'},
+  {q:'ما هو العلاج الأساسي لمريض السكري من النوع الأول؟',opts:['الميتفورمين فقط','التمارين الرياضية فقط','الأنسولين مدى الحياة','تغيير النظام الغذائي فقط'],ans:2,exp:'مريض النوع الأول لا ينتج الأنسولين إطلاقاً لذا يحتاج حقن الأنسولين مدى الحياة. لا يمكن الاستغناء عنه بأي علاج آخر.'},
+  {q:'ما هي أفضل طريقة لتتبع التحكم في السكري على مدى 3 أشهر؟',opts:['قياس سكر الصيام يومياً','فحص HbA1c','قياس الوزن أسبوعياً','فحص البول'],ans:1,exp:'فحص HbA1c هو المعيار الذهبي لتقييم مستوى التحكم في السكري على مدى 2-3 أشهر، ويُجرى كل 3-6 أشهر لمرضى السكري.'},
+];
+let qIdx=0,qScore=0,qAnswered=false;
+function startQuiz(){qIdx=0;qScore=0;document.getElementById('quizStart').style.display='none';document.getElementById('quizGame').style.display='block';renderQ();}
+function renderQ(){
+  const q=quizData[qIdx];
+  qAnswered=false;
+  document.getElementById('qCounter').textContent=`سؤال ${qIdx+1} من ${quizData.length}`;
+  document.getElementById('qScore').textContent=`النتيجة: ${qScore}`;
+  document.getElementById('qProgress').style.width=((qIdx+1)/quizData.length*100)+'%';
+  document.getElementById('qText').textContent=q.q;
+  document.getElementById('qFeedback').style.display='none';
+  document.getElementById('qNext').style.display='none';
+  document.getElementById('qOptions').innerHTML=q.opts.map((o,i)=>`
+    <button onclick="answerQ(${i})" style="padding:0.8rem 1.2rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:12px;color:var(--light);font-family:'Cairo',sans-serif;font-size:0.9rem;text-align:right;cursor:pointer;transition:all 0.2s;width:100%;" id="opt${i}">${String.fromCharCode(0x31+i)}) ${o}</button>`).join('');
+}
+function answerQ(i){
+  if(qAnswered)return;qAnswered=true;
+  const q=quizData[qIdx];
+  const fb=document.getElementById('qFeedback');
+  document.querySelectorAll('#qOptions button').forEach((b,j)=>{
+    b.style.pointerEvents='none';
+    if(j===q.ans){b.style.background='rgba(0,201,167,0.2)';b.style.borderColor='rgba(0,201,167,0.5)';b.style.color='var(--teal)';}
+    if(j===i&&i!==q.ans){b.style.background='rgba(232,69,69,0.2)';b.style.borderColor='rgba(232,69,69,0.5)';b.style.color='#ff8080';}
+  });
+  if(i===q.ans){qScore++;fb.style.background='rgba(0,201,167,0.1)';fb.style.border='1px solid rgba(0,201,167,0.3)';fb.innerHTML='✅ <strong>إجابة صحيحة!</strong> '+q.exp;}
+  else{fb.style.background='rgba(232,69,69,0.1)';fb.style.border='1px solid rgba(232,69,69,0.3)';fb.innerHTML='❌ <strong>إجابة خاطئة.</strong> '+q.exp;}
+  fb.style.display='block';
+  document.getElementById('qNext').style.display='block';
+  document.getElementById('qNext').textContent=qIdx<quizData.length-1?'السؤال التالي ←':'عرض النتيجة 🏆';
+}
+function nextQ(){
+  qIdx++;
+  if(qIdx>=quizData.length)showQuizResult();
+  else renderQ();
+}
+function showQuizResult(){
+  document.getElementById('quizGame').style.display='none';
+  const res=document.getElementById('quizResult');res.style.display='block';
+  const pct=Math.round(qScore/quizData.length*100);
+  const emoji=pct>=90?'🏆':pct>=70?'⭐':pct>=50?'👍':'📚';
+  const title=pct>=90?'متفوق! معرفتك ممتازة!':pct>=70?'جيد جداً! استمر في التعلم':pct>=50?'لا بأس — راجع المعلومات':' وقت التعلم! قراءة الدليل مطلوبة';
+  const msg=pct>=70?'أنت على دراية جيدة بمرض السكري. حافظ على هذا المستوى من الوعي الصحي!':'ننصحك بقراءة أقسام الدليل بعناية لتعميق معرفتك بمرض السكري.';
+  document.getElementById('qResultEmoji').textContent=emoji;
+  document.getElementById('qResultTitle').textContent=title;
+  document.getElementById('qResultScore').textContent=`${qScore}/${quizData.length} (${pct}%)`;
+  document.getElementById('qResultMsg').textContent=msg;
+}
+function restartQuiz(){
+  document.getElementById('quizResult').style.display='none';
+  document.getElementById('quizStart').style.display='block';
+}
+
+// ── TYPE COMPARISON ──
+const compareRows=[
+  ['السبب الرئيسي','مناعي ذاتي (تدمير خلايا بيتا)','مقاومة الأنسولين + نقص نسبي'],
+  ['العمر عند الظهور','عادةً أقل من 30 سنة','عادةً فوق 40 سنة'],
+  ['السرعة','مفاجئ وسريع','تدريجي وبطيء'],
+  ['الوزن عند التشخيص','عادةً طبيعي أو نحيف','عادةً زيادة وزن أو بدانة'],
+  ['إنتاج الأنسولين','معدوم تماماً','منخفض أو غير فعّال'],
+  ['الأجسام المضادة','موجودة (Anti-GAD, ICA)','غائبة عادةً'],
+  ['علاج أساسي','أنسولين إجباري مدى الحياة','نظام غذائي + أدوية فموية ± أنسولين'],
+  ['الوقاية','غير ممكنة حالياً','ممكنة بتغيير نمط الحياة'],
+  ['نسبة الانتشار','~10% من الحالات','~90% من الحالات'],
+  ['الكيتوأسيدوز DKA','خطر مرتفع','نادر نسبياً'],
+  ['متلازمة HONK','نادرة','أكثر شيوعاً'],
+  ['الوراثة','متعددة الجينات (معقدة)','أقوى ارتباطاً بالوراثة'],
+];
+document.getElementById('compareTable').innerHTML=compareRows.map((r,i)=>`
+  <tr style="background:${i%2===0?'rgba(255,255,255,0.02)':'transparent'}">
+    <td style="padding:0.85rem 1.2rem;font-size:0.85rem;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.04);">${r[0]}</td>
+    <td style="padding:0.85rem 1.2rem;font-size:0.83rem;text-align:center;color:rgba(255,128,128,0.9);border-bottom:1px solid rgba(255,255,255,0.04);">${r[1]}</td>
+    <td style="padding:0.85rem 1.2rem;font-size:0.83rem;text-align:center;color:rgba(0,201,167,0.9);border-bottom:1px solid rgba(255,255,255,0.04);">${r[2]}</td>
+  </tr>`).join('');
+
+// ── MEDICATIONS TABLE ──
+const medsData=[
+  {name:'ميتفورمين (Metformin)',cat:'بيغوانيد',dose:'500-2000 ملغ/يوم',timing:'مع الوجبات',note:'الخط الأول للنوع الثاني'},
+  {name:'غليبنكلاميد (Glibenclamide)',cat:'سلفونيل يوريا',dose:'2.5-15 ملغ/يوم',timing:'قبل الإفطار',note:'قد يسبب هبوط السكر'},
+  {name:'سيتاغليبتين (Sitagliptin)',cat:'مثبط DPP-4',dose:'100 ملغ/يوم',timing:'في أي وقت',note:'محايد للوزن'},
+  {name:'إمباغليفلوزين (Empagliflozin)',cat:'مثبط SGLT-2',dose:'10-25 ملغ/يوم',timing:'الصباح',note:'يحمي القلب والكلى'},
+  {name:'سيماغلوتيد (Semaglutide)',cat:'ناهض GLP-1',dose:'0.5-2 ملغ أسبوعياً',timing:'حقن أسبوعي',note:'يقلل الوزن بفاعلية'},
+  {name:'أنسولين غلارجين (Glargine)',cat:'أنسولين بطيء',dose:'10-50 وحدة/يوم',timing:'نفس الوقت يومياً',note:'24 ساعة تغطية'},
+  {name:'أنسولين ليسبرو (Lispro)',cat:'أنسولين سريع',dose:'حسب الوجبة',timing:'قبل الأكل بـ 15 دقيقة',note:'مع حساب الكربوهيدرات'},
+  {name:'بياغليتازون (Pioglitazone)',cat:'ثيازوليدينيديون',dose:'15-45 ملغ/يوم',timing:'مرة يومياً',note:'يحسن حساسية الأنسولين'},
+  {name:'أكاربوز (Acarbose)',cat:'مثبط ألفا-غلوكوزيداز',dose:'50-300 ملغ/يوم',timing:'مع أول لقمة',note:'يُبطئ امتصاص الكربوهيدرات'},
+];
+document.getElementById('medsTable').innerHTML=medsData.map((m,i)=>`
+  <tr style="background:${i%2===0?'rgba(255,255,255,0.02)':'transparent'};transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.04)'" onmouseout="this.style.background='${i%2===0?'rgba(255,255,255,0.02)':'transparent'}'">
+    <td style="padding:0.9rem 1.2rem;font-size:0.87rem;font-weight:700;border-bottom:1px solid rgba(255,255,255,0.04);">${m.name}</td>
+    <td style="padding:0.9rem 1.2rem;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="background:rgba(0,201,167,0.12);color:var(--teal);padding:0.2rem 0.6rem;border-radius:6px;font-size:0.73rem;font-weight:700;">${m.cat}</span></td>
+    <td style="padding:0.9rem 1.2rem;text-align:center;font-size:0.83rem;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--gold);">${m.dose}</td>
+    <td style="padding:0.9rem 1.2rem;text-align:center;font-size:0.83rem;border-bottom:1px solid rgba(255,255,255,0.04);color:rgba(240,244,255,0.7);">${m.timing}</td>
+    <td style="padding:0.9rem 1.2rem;text-align:center;font-size:0.8rem;border-bottom:1px solid rgba(255,255,255,0.04);color:rgba(240,244,255,0.55);">${m.note}</td>
+  </tr>`).join('');
+
+// ── DEVICES ──
+const devicesData=[
+  {name:'AccuChek Guide',type:'جهاز شرائح تقليدي',price:'💰 منخفض التكلفة',pros:['سهل الاستخدام','دقيق جداً','واسع الانتشار'],cons:['يحتاج وخز الإصبع','شرائح لها تكلفة'],connectivity:'لا',battery:'عادي',rating:4,color:'var(--teal)'},
+  {name:'FreeStyle Libre 3',type:'CGM — مراقبة مستمرة',price:'💰💰 متوسط التكلفة',pros:['لا يحتاج وخز الإصبع','قراءة كل دقيقة','تنبيهات ارتفاع وهبوط'],cons:['يُلصق على الجسم','تكلفة أعلى'],connectivity:'بلوتوث',battery:'14 يوم',rating:5,color:'var(--purple)'},
+  {name:'Dexcom G7',type:'CGM — مراقبة مستمرة',price:'💰💰💰 مرتفع التكلفة',pros:['أدق جهاز CGM','تكامل مع أنظمة AID','10 أيام استخدام'],cons:['الأغلى سعراً','يحتاج جلسة ضبط'],connectivity:'بلوتوث + NFC',battery:'10 أيام',rating:5,color:'#0080ff'},
+  {name:'Contour Plus One',type:'جهاز شرائح ذكي',price:'💰 منخفض التكلفة',pros:['ذاكرة 800 قراءة','تطبيق هاتف','دقيق ومعتمد ADA'],cons:['يحتاج وخز الإصبع','يحتاج بلوتوث للتطبيق'],connectivity:'بلوتوث',battery:'2 بطاريتا AAA',rating:4,color:'var(--gold)'},
+];
+document.getElementById('devicesGrid').innerHTML=devicesData.map(d=>`
+  <div style="background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:1.8rem;transition:all 0.3s;" onmouseover="this.style.transform='translateY(-5px)';this.style.borderColor='rgba(255,255,255,0.2)'" onmouseout="this.style.transform='';this.style.borderColor='var(--glass-border)'">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;">
+      <div>
+        <div style="font-size:1rem;font-weight:700;margin-bottom:0.2rem;">${d.name}</div>
+        <div style="font-size:0.75rem;color:${d.color};font-weight:600;">${d.type}</div>
+      </div>
+      <div style="font-size:0.8rem;">${'⭐'.repeat(d.rating)}</div>
+    </div>
+    <div style="font-size:0.8rem;margin-bottom:1rem;color:rgba(240,244,255,0.6);">${d.price}</div>
+    <div style="margin-bottom:0.8rem;">
+      <div style="font-size:0.73rem;color:var(--teal);font-weight:700;margin-bottom:0.4rem;">✅ المزايا</div>
+      ${d.pros.map(p=>`<div style="font-size:0.8rem;color:rgba(240,244,255,0.7);padding:0.2rem 0;">• ${p}</div>`).join('')}
+    </div>
+    <div style="margin-bottom:1rem;">
+      <div style="font-size:0.73rem;color:#ff8080;font-weight:700;margin-bottom:0.4rem;">⚠️ العيوب</div>
+      ${d.cons.map(c=>`<div style="font-size:0.8rem;color:rgba(240,244,255,0.6);padding:0.2rem 0;">• ${c}</div>`).join('')}
+    </div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+      <span style="background:rgba(255,255,255,0.05);padding:0.25rem 0.6rem;border-radius:6px;font-size:0.72rem;">📡 ${d.connectivity}</span>
+      <span style="background:rgba(255,255,255,0.05);padding:0.25rem 0.6rem;border-radius:6px;font-size:0.72rem;">🔋 ${d.battery}</span>
+    </div>
+  </div>`).join('');
+
+// ── INSULIN CALCULATOR ──
+function calcInsulin(){
+  const curr=parseFloat(document.getElementById('iCurrent').value);
+  const tgt=parseFloat(document.getElementById('iTarget').value);
+  const tdd=parseFloat(document.getElementById('iTDD').value);
+  const carbs=parseFloat(document.getElementById('iCarbs').value);
+  if(!curr||!tgt||!tdd||!carbs){showToast('أكمل جميع الحقول');return;}
+  const isf=1800/tdd;
+  const icr=500/tdd;
+  const corrDose=Math.max(0,((curr-tgt)/isf)).toFixed(1);
+  const mealDose=(carbs/icr).toFixed(1);
+  const total=(parseFloat(corrDose)+parseFloat(mealDose)).toFixed(1);
+  document.getElementById('iCorr').textContent=corrDose;
+  document.getElementById('iMeal').textContent=mealDose;
+  document.getElementById('iTotal').textContent=total;
+  document.getElementById('insulinNote').textContent=`🔬 بناءً على قاعدة 1800: عامل التصحيح = ${isf.toFixed(0)} ملغ/دل لكل وحدة | قاعدة 500: نسبة الكربوهيدرات = ${icr.toFixed(0)} غرام لكل وحدة. هذه أرقام تقديرية تعليمية — جرعتك الفعلية تختلف حسب حالتك.`;
+  document.getElementById('insulinResult').style.display='block';
+}
+
+// ── TIMER ──
+const timerPresets=[
+  {label:'⏰ بعد الوجبة بساعتين',secs:7200,color:'var(--teal)'},
+  {label:'🌅 صيام 8 ساعات',secs:28800,color:'var(--gold)'},
+  {label:'💉 قبل الحقن بـ15 دقيقة',secs:900,color:'#a78bfa'},
+  {label:'🚶 بعد المشي 30 دقيقة',secs:1800,color:'#0080ff'},
+];
+let timerInterval=null,timerLeft=0,timerTotal=0;
+document.getElementById('timerPresets').innerHTML=timerPresets.map((p,i)=>`
+  <button onclick="setTimer(${i})" id="tpBtn${i}" style="padding:0.65rem 0.8rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:12px;color:rgba(240,244,255,0.75);font-family:'Cairo',sans-serif;font-size:0.8rem;cursor:pointer;transition:all 0.3s;text-align:center;" onmouseover="this.style.borderColor='${p.color}'" onmouseout="this.style.borderColor='var(--glass-border)'">${p.label}</button>`).join('');
+function setTimer(i){
+  clearInterval(timerInterval);timerInterval=null;
+  timerTotal=timerPresets[i].secs;timerLeft=timerTotal;
+  updateTimerDisplay();
+  document.getElementById('timerLabel').textContent=timerPresets[i].label;
+  document.querySelectorAll('#timerPresets button').forEach((b,j)=>b.style.background=j===i?'rgba(0,201,167,0.15)':'var(--glass)');
+}
+function updateTimerDisplay(){
+  const h=Math.floor(timerLeft/3600),m=Math.floor((timerLeft%3600)/60),s=timerLeft%60;
+  document.getElementById('timerClock').textContent=(h>0?h.toString().padStart(2,'0')+':':'')+(m.toString().padStart(2,'0'))+':'+s.toString().padStart(2,'0');
+  const pct=timerTotal>0?Math.round((1-timerLeft/timerTotal)*100):0;
+  document.getElementById('timerPct').textContent=pct+'%';
+  const offset=502-(502*(1-timerLeft/timerTotal));
+  document.getElementById('timerArc').style.strokeDashoffset=Math.max(0,offset);
+}
+function startTimer(){
+  if(timerLeft<=0||timerTotal===0){showToast('اختر نوع المؤقت أولاً');return;}
+  if(timerInterval)return;
+  timerInterval=setInterval(()=>{
+    timerLeft--;updateTimerDisplay();
+    if(timerLeft<=0){clearInterval(timerInterval);timerInterval=null;showToast('⏰ انتهى الوقت! حان موعد قياس السكر');}
+  },1000);
+}
+function pauseTimer(){clearInterval(timerInterval);timerInterval=null;}
+function resetTimer(){clearInterval(timerInterval);timerInterval=null;timerLeft=timerTotal;updateTimerDisplay();}
+
+// ── WORLD MAP (SVG-based) ──
+const regions=[
+  {name:'الشرق الأوسط وشمال أفريقيا',pct:16.2,color:'#e84545',flag:'🌍',count:'73M'},
+  {name:'جنوب شرق آسيا',pct:11.3,color:'#e84545',flag:'🌏',count:'90M'},
+  {name:'أمريكا الشمالية والكاريبي',pct:10.7,color:'#f5a623',flag:'🌎',count:'51M'},
+  {name:'أمريكا اللاتينية',pct:10.3,color:'#f5a623',flag:'🌎',count:'32M'},
+  {name:'أوروبا الغربية',pct:6.8,color:'#f5a623',flag:'🌍',count:'61M'},
+  {name:'أفريقيا جنوب الصحراء',pct:4.2,color:'#00c9a7',flag:'🌍',count:'24M'},
+  {name:'المحيط الهادئ',pct:4.1,color:'#00c9a7',flag:'🌏',count:'3.5M'},
+  {name:'أوروبا الشرقية',pct:7.5,color:'#f5a623',flag:'🌍',count:'33M'},
+];
+document.getElementById('mapRegions').innerHTML=regions.map(r=>`
+  <div style="background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:1.1rem;transition:all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
+      <span style="font-size:0.85rem;font-weight:600;">${r.flag} ${r.name}</span>
+      <span style="font-size:0.9rem;font-weight:900;color:${r.color};">${r.pct}%</span>
+    </div>
+    <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;">
+      <div style="height:100%;width:${Math.min(r.pct/20*100,100)}%;background:${r.color};border-radius:3px;transition:width 1s ease;"></div>
+    </div>
+    <div style="font-size:0.73rem;color:rgba(240,244,255,0.4);margin-top:0.4rem;">${r.count} مصاب</div>
+  </div>`).join('');
+// Draw simple SVG world representation
+const mapCanvas=document.getElementById('mapCanvas');
+const mctx=mapCanvas.getContext('2d');
+mapCanvas.width=mapCanvas.offsetWidth||900;mapCanvas.height=380;
+function drawMap(){
+  mctx.clearRect(0,0,mapCanvas.width,mapCanvas.height);
+  const w=mapCanvas.width,h=mapCanvas.height;
+  // Background
+  mctx.fillStyle='rgba(13,27,62,0.5)';
+  mctx.beginPath();mctx.roundRect(0,0,w,h,16);mctx.fill();
+  // Grid lines
+  mctx.strokeStyle='rgba(255,255,255,0.04)';mctx.lineWidth=1;
+  for(let x=0;x<w;x+=w/12){mctx.beginPath();mctx.moveTo(x,0);mctx.lineTo(x,h);mctx.stroke();}
+  for(let y=0;y<h;y+=h/6){mctx.beginPath();mctx.moveTo(0,y);mctx.lineTo(w,y);mctx.stroke();}
+  // Simplified continent blobs
+  const blobs=[
+    {x:0.18,y:0.35,rx:0.11,ry:0.28,col:'rgba(232,69,69,0.5)',label:'أمريكا الشمالية',lx:0.18,ly:0.25},
+    {x:0.23,y:0.62,rx:0.07,ry:0.18,col:'rgba(245,166,35,0.5)',label:'أمريكا الجنوبية',lx:0.23,ly:0.55},
+    {x:0.44,y:0.38,rx:0.07,ry:0.22,col:'rgba(245,166,35,0.45)',label:'أوروبا',lx:0.44,ly:0.28},
+    {x:0.5,y:0.6,rx:0.08,ry:0.2,col:'rgba(0,201,167,0.5)',label:'أفريقيا',lx:0.5,ly:0.5},
+    {x:0.63,y:0.32,rx:0.14,ry:0.24,col:'rgba(232,69,69,0.55)',label:'آسيا',lx:0.63,ly:0.22},
+    {x:0.85,y:0.65,rx:0.06,ry:0.1,col:'rgba(0,201,167,0.45)',label:'أستراليا',lx:0.85,ly:0.58},
+  ];
+  blobs.forEach(b=>{
+    mctx.beginPath();
+    mctx.ellipse(b.x*w,b.y*h,b.rx*w,b.ry*h,0,0,Math.PI*2);
+    mctx.fillStyle=b.col;mctx.fill();
+    mctx.strokeStyle='rgba(255,255,255,0.15)';mctx.lineWidth=1;mctx.stroke();
+    mctx.fillStyle='rgba(240,244,255,0.8)';
+    mctx.font=`bold ${Math.max(10,w*0.012)}px Cairo`;
+    mctx.textAlign='center';mctx.fillText(b.label,b.lx*w,b.ly*h);
+  });
+  // Title
+  mctx.fillStyle='rgba(0,201,167,0.8)';
+  mctx.font=`bold ${Math.max(12,w*0.016)}px Cairo`;
+  mctx.textAlign='center';
+  mctx.fillText('خريطة توزيع نسب الإصابة بالسكري (IDF 2023)',w/2,30);
+}
+drawMap();window.addEventListener('resize',()=>{mapCanvas.width=mapCanvas.offsetWidth;drawMap();});
+
+// ── HEALTH REPORT ──
+function generateReport(){
+  const name=document.getElementById('rpName').value||'المريض';
+  const age=document.getElementById('rpAge').value;
+  const weight=parseFloat(document.getElementById('rpWeight').value);
+  const height=parseFloat(document.getElementById('rpHeight').value)/100;
+  const fbs=parseFloat(document.getElementById('rpFBS').value);
+  const hba1c=parseFloat(document.getElementById('rpHba1c').value);
+  const bp=document.getElementById('rpBP').value;
+  const dtype=document.getElementById('rpType').value;
+  const meds=document.getElementById('rpMeds').value;
+  const bmi=height>0&&weight>0?(weight/(height*height)).toFixed(1):'—';
+  const bmiStatus=bmi==='—'?'—':bmi<18.5?'نحيف':bmi<=24.9?'طبيعي ✅':bmi<=29.9?'زيادة وزن ⚠️':'بدانة 🔴';
+  const fbsStatus=!fbs?'—':fbs<100?'طبيعي ✅':fbs<=125?'ما قبل السكري ⚠️':'مرتفع 🔴';
+  const hba1cStatus=!hba1c?'—':hba1c<5.7?'طبيعي ✅':hba1c<=6.4?'ما قبل السكري ⚠️':hba1c<7?'سكري — تحكم جيد 🟡':'سكري — يحتاج مراجعة 🔴';
+  const bpStatus=!bp?'—':parseInt(bp)<120?'ممتاز ✅':parseInt(bp)<130?'طبيعي ✅':parseInt(bp)<140?'مرتفع قليلاً ⚠️':'مرتفع 🔴';
+  const out=document.getElementById('reportOutput');
+  out.style.display='block';
+  out.innerHTML=`
+  <div id="printReport" style="background:var(--glass);border:1px solid var(--glass-border);border-radius:24px;padding:2.5rem;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--glass-border);">
+      <div><div style="font-size:1.4rem;font-weight:700;color:var(--teal);">📋 التقرير الصحي الشخصي</div><div style="font-size:0.82rem;color:rgba(240,244,255,0.5);margin-top:0.3rem;">تاريخ الإصدار: ${new Date().toLocaleDateString('ar-EG')}</div></div>
+      <div style="text-align:center;font-size:2.5rem;">🩺</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin-bottom:2rem;">
+      <div><div style="font-size:0.72rem;color:rgba(240,244,255,0.45);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.3rem;">الاسم</div><div style="font-size:1.1rem;font-weight:700;">${name}</div></div>
+      <div><div style="font-size:0.72rem;color:rgba(240,244,255,0.45);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.3rem;">العمر</div><div style="font-size:1.1rem;font-weight:700;">${age||'—'} سنة</div></div>
+      <div><div style="font-size:0.72rem;color:rgba(240,244,255,0.45);margin-bottom:0.3rem;">نوع السكري</div><div style="font-size:1rem;font-weight:600;color:var(--teal);">${dtype||'غير محدد'}</div></div>
+      <div><div style="font-size:0.72rem;color:rgba(240,244,255,0.45);margin-bottom:0.3rem;">الأدوية</div><div style="font-size:0.88rem;color:rgba(240,244,255,0.75);">${meds||'—'}</div></div>
+    </div>
+    <h4 style="font-size:0.9rem;color:rgba(240,244,255,0.5);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--glass-border);">📊 المؤشرات الحيوية</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:2rem;">
+      ${[[`⚖️ مؤشر الكتلة (BMI)`,bmi,bmiStatus],[`🩸 سكر الصيام`,fbs?fbs+' ملغ/دل':'—',fbsStatus],[`📊 HbA1c`,hba1c?hba1c+'%':'—',hba1cStatus],[`❤️ ضغط الدم الانقباضي`,bp?bp+' ملمتر':'—',bpStatus]].map(([label,val,st])=>`
+        <div style="background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);border-radius:14px;padding:1.1rem;">
+          <div style="font-size:0.8rem;color:rgba(240,244,255,0.5);margin-bottom:0.3rem;">${label}</div>
+          <div style="font-size:1.2rem;font-weight:900;color:var(--light);">${val}</div>
+          <div style="font-size:0.78rem;margin-top:0.3rem;">${st}</div>
+        </div>`).join('')}
+    </div>
+    <div style="padding:1rem 1.3rem;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);border-radius:12px;font-size:0.8rem;color:rgba(240,244,255,0.6);line-height:1.7;margin-bottom:1.5rem;">
+      ⚠️ هذا التقرير للتثقيف الشخصي فقط ولا يُغني عن استشارة الطبيب. شارك هذه البيانات مع طبيبك للحصول على تقييم طبي دقيق.
+    </div>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <button onclick="window.print()" class="btn-primary">🖨️ طباعة التقرير</button>
+      <button onclick="copyReport()" class="btn-outline">📋 نسخ البيانات</button>
+    </div>
+  </div>`;
+  out.scrollIntoView({behavior:'smooth',block:'start'});
+  showToast('✅ تم إنشاء التقرير الصحي!');
+}
+function copyReport(){
+  const name=document.getElementById('rpName').value||'المريض';
+  const txt=`التقرير الصحي لـ: ${name}\nالتاريخ: ${new Date().toLocaleDateString('ar-EG')}\nسكر الصيام: ${document.getElementById('rpFBS').value||'—'} ملغ/دل\nHbA1c: ${document.getElementById('rpHba1c').value||'—'}%\nضغط الدم: ${document.getElementById('rpBP').value||'—'}\nالأدوية: ${document.getElementById('rpMeds').value||'—'}`;
+  navigator.clipboard.writeText(txt).then(()=>showToast('✅ تم النسخ!')).catch(()=>showToast('❌ تعذّر النسخ'));
+}
+
+// ── SCROLL REVEAL ──
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),i*80);
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.08});
+reveals.forEach(r=>observer.observe(r));
+</script>
+</body>
+</html>
